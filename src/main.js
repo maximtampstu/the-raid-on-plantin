@@ -1,3 +1,4 @@
+/*
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
@@ -22,3 +23,30 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+*/
+
+gsap.registerPlugin(ScrollTrigger);
+
+const appearEffect = (itemClass, showPercent) => {  
+  const appearItems = document.querySelectorAll(itemClass);
+  console.log(appearItems)
+  appearItems.forEach(item => {
+    console.log(item.className)
+    gsap.set(item, { opacity: 0 })
+    gsap.to(item, {
+      opacity: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: item,
+        start: `top ${showPercent}%`,
+      }
+    });
+  });
+}
+
+const init = () => {
+  appearEffect(".appear", 85);
+  appearEffect(".appear-later", 35);
+};
+
+init();
