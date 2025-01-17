@@ -24,7 +24,7 @@ document.querySelector('#app').innerHTML = `
 
 setupCounter(document.querySelector('#counter'))
 */
-
+/*
 gsap.registerPlugin(ScrollTrigger);
 
 const appearEffect = (itemClass, showPercent) => {  
@@ -48,5 +48,37 @@ const init = () => {
   appearEffect(".appear", 85);
   appearEffect(".appear-later", 35);
 };
+
+init();
+*/
+
+const init = () => {
+  //document.querySelector('.js').innerHTML = "Enabled";
+
+  const $navButton = document.querySelector('.phone-button');
+  const $navList = document.querySelector('.nav__list');
+  const listItems = $navList.querySelectorAll("li");
+  const $closeButton = document.querySelector('.nav__item--my-beginning button')
+
+  $navButton.classList.remove('visually-hidden');
+  $navList.classList.add("visually-hidden");
+
+  const openNavigation = () => {
+    $navButton.setAttribute("aria-expanded", "true");
+    $navList.classList.remove("visually-hidden");
+    $navButton.classList.add('visually-hidden');
+  }
+
+  const closeNavigation = () => {
+    $navButton.setAttribute("aria-expanded", "false");
+    $navList.classList.add("visually-hidden");
+    $navButton.classList.remove('visually-hidden');
+  }
+
+  $navButton.addEventListener("click", openNavigation);
+  $closeButton.addEventListener("click", closeNavigation);
+}
+
+
 
 init();

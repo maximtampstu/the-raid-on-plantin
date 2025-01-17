@@ -1,28 +1,294 @@
 :root {
-  /*
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: black;
-  font-size: 2rem;
-  background-color: beige;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  */
+  --color-black: #232321;
+  --color-white: #E8E0D3;
+  --color-red: #B1291D;
+  --color-blue: #2461A6;
 }
 
-.pack{
+@font-face {
+  font-family: "Archivo";
+  src: url(../../font/archivo/archivo-black.ttf);
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a{
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-white);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+p {
+  font-family: Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 150%;
+  color: var(--color-black);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+
+.phone-button {
+  position: fixed;
+  right: 1.5rem;
+  top: 1.5rem;
+
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5rem;
+  background-color: var(--color-blue);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+
+  box-shadow: 0 0 4px var(--color-black);
+  border-style: none;
+  padding: 0rem;
+}
+
+.phone-button__progress,
+.phone-button__hider,
+.phone-button__icon {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.phone-button__progress {
+  background-color: var(--color-white);
+  border-radius: 5rem;
+}
+
+.phone-button__hider {
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 5rem;
+  background-color: var(--color-blue);
+}
+
+
+.nav__list{
+  position: fixed;
+  width: 100vw;
+
+  background-color: var(--color-blue);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item{
+  background-color: var(--color-blue);
+  border-style: none none solid none;
+  border-width: 2px;
+  border-color: #1C4D84;
+}
+
+.nav__item--my-beginning{
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__item--my-beginning button{
+  background-color: #1C4D84;
+  border-style: none;
+  padding: 0 0.6rem;
+}
+
+.nav__link{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+}
+
+.nav__link p{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  color: var(--color-white);
+}
+
+.locked p{
+  color: var(--color-black);
+  opacity: 75%;
+}
+
+
+
+
+
+.hero {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 2fr 1fr 2fr;
+
+  overflow-x: hidden;
+
+  height: 100dvh;
+  width: 100vw;
+}
+
+.hero__plate {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url(../image/plate-hero.png);
+  background-position-x: center;
+  background-position-Y: -2rem;
+  background-repeat: no-repeat;
+  background-size: 200%;
+}
+
+.hero__flies {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+
+  margin-top: -1rem;
+  margin-left: -1rem;
+}
+
+.hero__title {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+
+  width: 290px;
+  height: 118px;
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero__text {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+
+  width: 20rem;
+  margin-left: 1rem;
+}
+
+.hero__button {
+  grid-column: 1 / span 2;
+  grid-row: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+
+  margin-top: 1.5rem;
+}
+
+.hero__button p {
+  font-family: archivo, sans-serif;
+  font-size: 1.25rem;
+  color: var(--color-blue);
+  text-transform: uppercase;
+}
+
+.hero__date {
+  grid-column: 1;
+  grid-row: 6;
+
+  width: 80px;
+  height: auto;
+
+  align-self: end;
+  margin-bottom: 4rem;
+  margin-left: 2.5rem;
+}
+
+.hero__crossbow {
+  grid-column: 1;
+  grid-row: 5 / span 2;
+
+
+  rotate: -150deg;
+  margin-bottom: -1.25rem;
+  margin-left: -1.5rem;
+
+  align-self: end;
+}
+
+.hero__plantin {
+  grid-column: 2 / span 2;
+  grid-row: 5 / span 2;
+
+  margin-right: -2rem;
+  margin-bottom: -2rem;
+  place-self: end;
+}
+
+.hero__character-i {
+  grid-column: 2 / span 2;
+  grid-row: 6;
+
+  width: 72px;
+  height: auto;
+
+  place-self: end;
+  margin-right: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.hero__pillar {
+  grid-column: 3;
+  grid-row: 1 / span 6;
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
+
+.pack {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
 
-.pack img{
+.pack img {
   grid-column: 1;
   grid-row: 1;
 }
