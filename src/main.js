@@ -75,8 +75,21 @@ const init = () => {
     $navButton.classList.remove('visually-hidden');
   }
 
+  const handleClickLink = (item) => {
+    console.log("appel")
+  }
+
   $navButton.addEventListener("click", openNavigation);
   $closeButton.addEventListener("click", closeNavigation);
+  listItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const link = item.querySelector('a');
+
+      if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
+        closeNavigation();
+      }
+    });
+  });
 }
 
 
