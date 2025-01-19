@@ -131,6 +131,7 @@ const init = () => {
   nav();
   letterMother();
   appearEffect(".appear", 85);
+  appearEffect(".appear-late", 40);
 }
 
 init();

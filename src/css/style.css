@@ -11,6 +11,7 @@
   --font-size-28-40: clamp(1.75rem, 1.4932rem + 1.0959vw, 2.5rem);
   --font-size-32-48: clamp(2rem, 1.6575rem + 1.4612vw, 3rem);
   --font-size-32-56: clamp(2rem, 1.4863rem + 2.1918vw, 3.5rem);
+  --font-size-36-48: clamp(2.25rem, 1.9932rem + 1.0959vw, 3rem);
 }
 
 @font-face {
@@ -450,10 +451,19 @@ h2{
   display: grid;
   grid-template-columns: 4fr 5fr;
   grid-template-rows: repeat(3, auto);
+
+  margin-top: 3rem;
 }
 
 .my-beginning__grave{
   grid-column: 1 / span 2;
+  grid-row: 1;
+
+  display: grid;
+}
+
+.my-beginning__grave img{
+  grid-column: 1;
   grid-row: 1;
 
   max-width: 36.5rem;
@@ -470,6 +480,7 @@ h2{
 
   margin-top: -3rem;
 }
+
 
 
 
@@ -676,7 +687,7 @@ h3{
     grid-row: 3;
   }
 
-  .my-beginning__grave{
+  .my-beginning__grave img{
     margin-left: -7rem;
   }
 
@@ -808,7 +819,7 @@ h3{
   }
 
   .my-beginning__coin-grave{
-    margin-bottom: 3rem;
+    margin-bottom: 4.5rem;
   }
 
   .my-beginning__leafes{
@@ -863,20 +874,6 @@ h3{
     grid-row: 5;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1203,4 +1200,183 @@ h3{
   .normandy__coin-maid{
     margin-bottom: -1rem;
   }
+}
+
+
+
+/* MY PRINTING EMPIRE */
+
+.my-printing-empire{
+  background-color: #C05F59;
+
+  background-image: url(../image/antwerp.png);
+  background-position-x: center;
+  background-repeat: no-repeat;
+
+  padding-top: 10rem;
+
+  overflow-x: hidden;
+}
+
+.my-printing-empire h2, .my-printing-empire h3{
+  color: var(--color-black);
+}
+
+.my-printing-empire p{
+  color: var(--color-white);
+}
+
+.my-printing-empire__head-story-container{
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.my-printing-empire__head-story{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.my-printing-empire__head-story svg{
+  margin-left: 2rem;
+}
+
+.my-printing-empire__bookshelf{
+  justify-self: end;
+
+  margin-right: -2rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.my-printing-empire__bookshelf img{
+  max-width: 17rem;
+}
+
+.problems__first-text{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+  margin-bottom: 3rem;
+}
+
+.problems__first-text div{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.problems_extra{
+  font-size: var(--font-size-28-40);
+  color: var(--color-black);
+  font-weight: bold;
+}
+
+.my-printing-empire__booklist-container{
+  display: grid;
+}
+
+.my-printing-empire__booklist{
+  grid-column: 1;
+  grid-row: 1;
+
+  display: grid;
+
+  max-width: 25rem; 
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+}
+
+.my-printing-empire__booklist img{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.my-printing-empire__book{
+  grid-column: 1;
+  grid-row: 1;
+
+  max-width: 9rem;
+  place-self: end;
+
+  margin-bottom: -5rem;
+  margin-right: -2rem;
+}
+
+.problems__second-text{
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+  margin-top: 7rem;
+}
+
+.blueprint{
+  height: 39.125rem;
+
+  background-color: var(--color-blue);
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+
+  border: solid 4px var(--color-white);
+}
+
+.my-printing-empire__bottom{
+  margin: 0 clamp(1rem, -2.0822rem + 13.1507vw, 10rem);
+}
+
+.neerlandais{
+  display: block;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  max-width: 43rem;
+}
+
+.neerlandais h3{
+  font-family: Helvetica, sans-serif;
+  font-size: var(--font-size-36-48);
+  font-weight: bold;
+
+  rotate: -90deg;
+  justify-self: end;
+  align-self: end;
+
+  margin-right: -4rem;
+  margin-left: -5.5rem;
+}
+
+.neerlandais__bottom-text-container{
+  grid-column: 1 / span 2;
+}
+
+.neerlandais__bottom-text-container h4{
+  font-family: Helvetica, sans-serif;
+  font-size: var(--font-size-24-32);
+  font-weight: bold;
+  color: var(--color-black);
+  margin-bottom: 0.25rem;
+}
+
+.neerlandais__bottom-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.neerlandais__bottom-text .bold--black{
+  color: var(--color-black);
+}
+
+.plantin-logo{
+  max-width: 26.25rem;
+  margin: 4rem 0;
+}
+
+.plantin-logo p{
+  background-color: rgba(35, 35, 33, 0.90);
+  padding: 1rem;
+  margin-top: 1rem;
 }
