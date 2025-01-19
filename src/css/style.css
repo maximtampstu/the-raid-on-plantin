@@ -96,7 +96,6 @@ p {
 }
 
 .phone-button__progress {
-  background-color: var(--color-white);
   border-radius: 5rem;
 }
 

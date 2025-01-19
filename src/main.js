@@ -24,33 +24,7 @@ document.querySelector('#app').innerHTML = `
 
 setupCounter(document.querySelector('#counter'))
 */
-/*
-gsap.registerPlugin(ScrollTrigger);
 
-const appearEffect = (itemClass, showPercent) => {  
-  const appearItems = document.querySelectorAll(itemClass);
-  console.log(appearItems)
-  appearItems.forEach(item => {
-    console.log(item.className)
-    gsap.set(item, { opacity: 0 })
-    gsap.to(item, {
-      opacity: 1,
-      duration: 1,
-      scrollTrigger: {
-        trigger: item,
-        start: `top ${showPercent}%`,
-      }
-    });
-  });
-}
-
-const init = () => {
-  appearEffect(".appear", 85);
-  appearEffect(".appear-later", 35);
-};
-
-init();
-*/
 const navInteraction = () => {
 
   const $navButton = document.querySelector('.phone-button');
@@ -85,11 +59,36 @@ const navInteraction = () => {
 
 }
 
+const phoneBar = (scrolled) => {
+  const canvas = document.querySelector(".phone-button__progress");
+  const ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.beginPath();
+  ctx.arc(28, 28, 25, 1.5 * Math.PI, 1.5 * Math.PI + (2 * Math.PI * (scrolled / 100)));
+  ctx.lineWidth = 12;
+  ctx.strokeStyle = "#E8E0D3";
+  ctx.stroke();
+
+}
+
+const progressBar = () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+
+  phoneBar(scrolled)
+}
+
+const nav = () => {
+  navInteraction();
+  document.addEventListener("scroll", progressBar);
+}
+
 const appearEffect = (itemClass, showPercent) => {
   const appearItems = document.querySelectorAll(itemClass);
-  console.log(appearItems)
   appearItems.forEach(item => {
-    console.log(item.className)
     gsap.set(item, { opacity: 0 })
     gsap.to(item, {
       opacity: 1,
@@ -129,7 +128,7 @@ const letterMother = () => {
 }
 
 const init = () => {
-  navInteraction();
+  nav();
   letterMother();
   appearEffect(".appear", 85);
 }
