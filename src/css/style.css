@@ -3,6 +3,14 @@
   --color-white: #E8E0D3;
   --color-red: #B1291D;
   --color-blue: #2461A6;
+
+
+  --font-size-16-20: clamp(1rem, 0.9144rem + 0.3653vw, 1.25rem);
+  --font-size-20-28: clamp(1.25rem, 1.0788rem + 0.7306vw, 1.75rem);
+  --font-size-24-32: clamp(1.5rem, 1.3288rem + 0.7306vw, 2rem);
+  --font-size-28-40: clamp(1.75rem, 1.4932rem + 1.0959vw, 2.5rem);
+  --font-size-32-48: clamp(2rem, 1.6575rem + 1.4612vw, 3rem);
+  --font-size-32-56: clamp(2rem, 1.4863rem + 2.1918vw, 3.5rem);
 }
 
 @font-face {
@@ -48,7 +56,7 @@ body {
 
 p {
   font-family: Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: var(--font-size-16-20);
   line-height: 150%;
   color: var(--color-black);
 }
@@ -60,6 +68,7 @@ p {
 
 
 .phone-button {
+  z-index: 999;
   position: fixed;
   right: 1.5rem;
   top: 1.5rem;
@@ -98,8 +107,8 @@ p {
   background-color: var(--color-blue);
 }
 
-
 .nav__list{
+  z-index: 1000;
   position: fixed;
   width: 100vw;
 
@@ -289,6 +298,8 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, auto);
+
+  overflow-x: hidden;
 }
 
 .head-story{
@@ -296,9 +307,11 @@ p {
   flex-direction: column;
   gap: 0.25rem;
 
-  margin: 0 1rem;
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  max-width: 43rem;
 
   grid-row: 2;
+
 }
 
 .my-beginning .head-story{
@@ -313,7 +326,7 @@ p {
 
 h2{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.75rem;
+  font-size: var(--font-size-28-40);
   font-weight: 700;
   color: var(--color-blue);
   width: 100%;
@@ -377,14 +390,58 @@ h2{
   padding: 0.5rem 4rem;
 }
 
-.my-beginning__plate{
-  background-image: url(../image/plate-my-beginning.png);
-  background-position: center;
-  background-size: 200%;
-  background-repeat: no-repeat;
+.letter-container{
+  z-index: 998;
 
-  height: 50px;
-  margin-top: -1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.letter-container img{
+  grid-row: 1;
+  grid-column: 1;
+
+  width: 21.5rem;
+  place-self: center;
+}
+
+.letter-container button{
+  grid-row: 1;
+  grid-column: 1;
+  place-self: center;
+
+  border: none;
+  background-color: var(--color-black);
+  padding: 0.5rem;
+  padding-right: 0.4rem;
+  padding-bottom: 0.3rem;
+  
+  margin-left: 15rem;
+  margin-bottom: 23rem;
+
+  z-index: 2;
+}
+
+
+
+.my-beginning__plate {
+  overflow-x: hidden;
+}
+
+.my-beginning__plate img {
+  width: 200%;
+  margin-left: -50%;
+
+  z-index: 3;
+  position: relative;
 }
 
 .my-beginning__death-visuals{
@@ -400,6 +457,8 @@ h2{
   grid-column: 1 / span 2;
   grid-row: 1;
 
+  max-width: 36.5rem;
+
   margin-left: -3rem;
 }
 
@@ -407,16 +466,21 @@ h2{
   grid-column: 1 / span 2;
   grid-row: 2 / span 2;
 
-  margin-top: -6rem;
-  margin-left: -3rem;
+  max-width: 23rem;
+  width: 60%;
+
+  margin-top: -3rem;
 }
+
+
 
 .my-beginning__coin-grave {
   grid-column: 1;
   grid-row: 1 / span 2;
 
+  max-width: 14.5rem;
+
   align-self: end;
-  margin-bottom: 1rem;
   margin-left: -1rem;
 }
 
@@ -425,13 +489,14 @@ h2{
   grid-row: 2;
 
   width: 80%;
+  max-width: 12rem;
 
-  margin-top: -1rem;
-  margin-left: -1.5rem;
+  margin-top: -2rem;
+  margin-left: -2rem;
 }
 
 .my-beginning__6-years-later{
-  font-size: 2rem;
+  font-size: var(--font-size-32-48);
   font-weight: bold;
   color: var(--color-red);
   opacity: 80%;
@@ -441,7 +506,7 @@ h2{
 
   align-self: end;
 
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
   margin-left: 4rem;
 }
 
@@ -450,12 +515,13 @@ h2{
   flex-direction: column;
   gap: 0.5rem;
 
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  max-width: 43rem;
 }
 
 h3{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.5rem;
+  font-size: var(--font-size-24-32);
   color: var(--color-red);
   width: 100%;
 }
@@ -471,7 +537,7 @@ h3{
 }
 
 .story__jump-out{
-  font-size: 1.25rem;
+  font-size: var(--font-size-20-28);
   font-weight: bold;
   text-align: center;
 
@@ -489,17 +555,19 @@ h3{
 }
 
 .my-beginning__letter-container div{
-  margin: 0 1rem;
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
   margin-top: 4rem;
 
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  max-width: 41.25rem;
 }
 
 .my-beginning__letter-container p{
   font-family: "Archivo";
-  font-size: 1.5rem;
+  font-size: var(--font-size-24-32);
   text-align: center;
   text-transform: uppercase;
   line-height: 110%;
@@ -515,45 +583,342 @@ h3{
 
 .my-beginning__flowers{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 75%;
+  grid-template-columns: 1fr;
+  width: 100%;
 
-  justify-self: end;
-  margin-top: -5rem;
+  justify-items: end;
 
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .my-beginning__dancy-flower{
+  grid-row: 1;
+  grid-column: 1;
+
   place-self: end;
-  margin-right: -7rem;
+  margin-right: 3.5rem;
+  margin-bottom: -1rem;
+  
+  max-width: 8.75rem;
 }
 
 .my-beginning__corn-flower{
+  grid-row: 1;
+  grid-column: 1;
+
   place-self: end;
-  margin-right: -3rem;
+  margin-right: -2rem;
+
+  max-width: 8.75rem;
 }
 
 .my-beginning__character-y{
-  grid-column: 2;
-  justify-self: end;
-  margin-top: -6rem;
-  margin-right: -3rem;
+  grid-row: 1;
+  grid-column: 1;
+
+  max-width: 7rem;
+  margin-right: -2rem;
+  place-self: end;
 }
+
+@media (max-width: 799px) {
+  .my-beginning__pillar{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+@media (min-width: 800px) {
+  .my-beginning{
+    grid-template-columns: 10% 1fr;
+    grid-template-rows: repeat(6, auto);
+  }
+
+  .my-beginning .head-story{
+    margin-left: 6rem;
+  }
+
+  .my-beginning .sub-story{
+    margin-left: 6rem;
+
+    justify-self: end;
+  }
+
+  .my-beginning__plate{
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  .my-beginning__plate img {
+    width: 150%;
+    margin-left: -25%;
+  }
+
+  .my-beginning__pillar{
+    grid-column: 1;
+    grid-row: 1 / span 6;
+
+    height: 100%;
+    width: auto;
+
+    justify-self: end;
+    margin-right: -3rem;
+    z-index: 3;
+  }
+
+  .my-beginning__death-visuals, .my-beginning__6-years-later{
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .my-beginning__grave{
+    margin-left: -7rem;
+  }
+
+  .my-beginning__coin-grave{
+    margin-left: -4rem;
+  }
+
+  .my-beginning__character-l{
+    margin-left: -7rem;
+  }
+
+  .my-beginning__letter-container div{
+    margin-left: 6rem;
+    justify-self: center;
+  }
+
+}
+
+@media (min-width: 1000px){
+  .my-beginning .sub-story{
+    margin-left: 6rem;
+    margin-top: -3%;
+    margin-right: clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+
+    justify-self: end;
+  }
+
+}
+
+@media (min-width: 1150px) {
+  .my-beginning__flowers{
+    margin-top: -6rem;
+  }
+
+  .my-beginning__dancy-flower {
+    max-width: 15rem;
+  }
+
+  .my-beginning__corn-flower{
+    max-width: 12rem;
+  }
+
+  .my-beginning__character-y{
+    max-width: 9rem;
+  }
+}
+
+@media (max-width: 1239px) {
+  .mother-letter-container, .my-beginning__coin-soldier {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+@media (min-width: 1240px) {
+  .my-beginning {
+    grid-template-columns: 10% 5fr 3fr;
+    grid-template-rows: repeat(5, auto);
+  }
+
+  .my-beginning .head-story{
+    margin-left: 3rem;
+  }
+
+  .my-beginning__1528{
+    width: 9rem;
+  }
+
+  .letter-button{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .my-beginning__plate{
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+
+  .my-beginning__plate img {
+    width: 110%;
+    margin-left: -5%;
+  }
+
+  .mother-letter-container{
+    grid-column: 3;
+    grid-row: 2 / span 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    margin-right: -3rem;
+  }
+
+  .my-beginning__open-letter{
+    max-width: 30rem;
+    width: 90%;
+    rotate: -9deg;
+  }
+
+  .my-beginning__coin-man{
+    justify-self: end;
+    margin-top: -3rem;
+    max-width: 15.75rem;
+  }
+
+  .my-beginning__death-visuals{
+    grid-column: 2;
+    grid-row: 3 / span 2;
+
+    margin-top: -3rem;
+    margin-left: -1rem;
+  }
+
+  .my-beginning__character-l{
+    margin-top: -6rem;
+  }
+
+  .my-beginning__coin-grave{
+    margin-bottom: 3rem;
+  }
+
+  .my-beginning__leafes{
+    margin-top: -4rem;
+  }
+
+  .my-beginning__6-years-later{
+    grid-column: 3;
+    grid-row: 3;
+
+    margin-bottom: 2rem;
+    margin-left: 0rem;
+  }
+
+  .my-beginning .sub-story{
+    grid-column: 2 / span 2;
+    grid-row: 4;
+
+    margin-top: 10rem;
+    margin-right: 2%;
+    max-width: 40rem;
+  }
+
+  .my-beginning__letter-container{
+    grid-column: 2 / span 2;
+    grid-row: 5;
+
+    margin-bottom: 14rem;
+    margin-top: 10rem;
+
+    display: grid;
+  }
+
+  .my-beginning__letter-container div{
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .my-beginning__coin-soldier{
+    grid-column: 1;
+    grid-row: 1;
+
+    max-width: 13.5rem;
+    place-self: center;
+
+    margin-left: -40rem;
+    margin-top: -30rem;
+  }
+
+  .my-beginning__flowers{
+    grid-column: 3;
+    grid-row: 5;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /* NORMANDY */
 
 .normandy{
-  margin-top: -5rem;
+  margin-top: -2rem;
   overflow-x: hidden;
 }
 
+.normandy__head{
+  display: grid;
+}
+
+.normandy__normandy{
+  grid-column: 1;
+  grid-row: 1;
+
+  overflow-x: hidden;
+
+  display: flex;
+  align-items: end;
+}
+
+.normandy__normandy img{
+  width: 300%;
+  height: auto;
+
+  margin-left: -65%;
+
+}
+
 .normandy__head-story-container{
+  grid-column: 1;
+  grid-row: 1;
+
   display: grid;
   grid-template-columns: 4fr 2fr;
   grid-template-rows: repeat(3, auto);
+
+  padding-bottom: 35%;
 }
 
 .normandy__head-story-container .head-story{
@@ -569,13 +934,13 @@ h3{
 }
 
 .normandy__plate img{
-  width: 200%;
-  margin-left: -50%;
+  width: 115%;
+  margin-left: -6%;
 }
 
 .extra-text{
   font-family: "Archivo";
-  font-size: 2rem;
+  font-size: var(--font-size-32-56);
   text-transform: uppercase;
   line-height: 110%;
   letter-spacing: -0.075rem;
@@ -589,7 +954,7 @@ h3{
   grid-row: 2;
 
   margin-top: -1rem;
-  margin-left: 0.25rem;
+  margin-left: 2%;
 }
 
 .normandy__coin-bookshelf {
@@ -599,16 +964,20 @@ h3{
   justify-self: end;
   margin-top: -2rem;
   margin-right: -2rem;
+  margin-bottom: 2rem;
+
+  max-width: 16rem;
+
+  z-index: 3;
 }
 
 .normandy__reading-container{
   display: grid;
   grid-template-columns: 1fr;
 
-  background-color: #C15C50;
+  background-color: #C05F59;
 
-  margin-top: 4rem;
-  padding-top: 4rem;
+  padding: 3rem 0;
 }
 
 .normandy__person-reading{
@@ -617,6 +986,7 @@ h3{
   z-index: 2;
 
   width: 80%;
+  max-width: 30rem;
 }
 
 .normandy__foggy-birds {
@@ -624,6 +994,7 @@ h3{
   grid-row: 1;
 
   margin-left: -4rem;
+  max-width: 35rem;
 }
 
 .normandy__character-s {
@@ -631,17 +1002,24 @@ h3{
   grid-row: 2;
 
   width: 25%;
+  max-width: 8rem;
+}
+
+.normandy__sub-story-container{
+  background-color: #C05F59;
+  padding: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+
+  display: flex;
+  justify-content: center;
 }
 
 .normandy__sub-story{
-  background-color: #C15C50;
-  padding: 0 1rem;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   padding-top: 3rem;
+  max-width: 38rem;
 }
 
 .sub-story__section{
@@ -695,14 +1073,14 @@ h3{
 .normandy__woman img{
   width: 215px;
 
-  margin-right: -4rem;
+  margin-right: -15%;
   margin-top: 4rem;
 
   z-index: 0;
 }
 
 .bookbind{
-  background-color: #C15C50;
+  background-color: #C05F59;
 
   margin-top: -5rem;
 }
@@ -711,13 +1089,14 @@ h3{
   background-color: var(--color-white);
   border: 4px solid rgba(36, 97, 166, 0.75);
 
-  margin: 0 1rem;
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
   padding: 1rem;
 
   display: grid;
   grid-column: 1fr;
 
   position: relative;
+  justify-self: start;
 }
 
 .bookbind h2{
@@ -727,7 +1106,7 @@ h3{
 
 .bookbind__continue{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.5rem;
+  font-size: var(--font-size-24-32);
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -736,4 +1115,93 @@ h3{
   margin-top: 0.25rem;
   font-weight: bold;
   color: var(--color-red);
+}
+
+@media (min-width: 550px){
+  .extra-text--normandy{
+    margin-top: -2.5%;
+    margin-left: 25%;
+  }
+}
+
+@media (min-width: 700px) {
+  .normandy__woman img {  
+    margin-right: -26%;
+    margin-top: 3rem;
+  }
+}
+
+
+@media (max-width: 899px) {
+  .normandy__coin-maid{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .normandy{
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+  }
+
+  .normandy__head{
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  .normandy__coin-maid{
+    grid-column: 1;
+    grid-row: 1;
+
+    align-self: end;
+    max-width: 15rem;
+    width: 50%;
+    z-index: 2;
+  }
+
+    .normandy__reading-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: min-content auto;
+
+      padding-top: 6rem;
+      padding-bottom: 0rem;
+    }
+}
+
+@media (min-width: 1000px) {
+  .normandy__normandy img{
+    width: 177rem;
+    height: auto;
+
+    margin-left: -40rem;
+  }
+
+  .normandy__head-story-container{
+    padding-bottom: 20rem;
+  }
+
+  .normandy__head-story-container .head-story{
+    margin-top: -6rem;
+  }
+
+  .sub-story__section--thin{
+    max-width: 30rem;
+    width: 80%;
+  }
+
+  .normandy__woman{
+    margin-top: -6rem;
+  }
+
+  .normandy__coin-maid{
+    margin-bottom: -1rem;
+  }
 }

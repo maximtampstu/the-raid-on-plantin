@@ -20,7 +20,7 @@
         </svg>
       </button>
       <nav class="nav">
-        <ul class="nav__list">
+        <ul class="nav__list visually-hidden">
           <li class="nav__item nav__item--my-beginning">
             <a class="nav__link" href="#my-beginning">
               <p>My Beginning</p>
@@ -32,7 +32,13 @@
                   fill="#E8E0D3" />
               </svg>
             </a>
-            <button><img src="./src/image/symbol-x.svg" alt="X symbol"></button>
+            <button>
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M27.5771 2.12132L25.4558 0L13.6422 11.8136L2.12132 0.292742L0 2.41406L11.5209 13.9349L-3.31402e-05 25.4558L2.12129 27.5772L13.6422 16.0563L25.4558 27.8699L27.5772 25.7486L15.7635 13.9349L27.5771 2.12132Z"
+                  fill="#E8E0D3" />
+              </svg>
+            </button>
           </li>
           <li class="nav__item">
             <a class="nav__link locked" href="#">
@@ -103,7 +109,7 @@
         <img class="hero__pillar" src="./src/image/pillar-hero.png" alt="Pillar">
       </section>
       <section id="my-beginning" class="my-beginning">
-        <div class="head-story">
+        <div class="head-story appear">
           <div class="head-story__heading">
             <h2>My Beginning</h2>
             <img class="my-beginning__1528" src="./src/image/date-1528.png" alt="Date 1528">
@@ -117,22 +123,34 @@
             peste” <span class="translation">(your mother has unfortunately died of the plague)</span>. I immediately start crying and look at my father, he already
             knew, he walks up to me and hugs me.</p>
             <button class="letter-button fancy-button"><p>Letter</p></button>
+            <div class="letter-container visually-hidden">
+              <button>
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M27.5771 2.12132L25.4558 0L13.6422 11.8136L2.12132 0.292742L0 2.41406L11.5209 13.9349L-3.31402e-05 25.4558L2.12129 27.5772L13.6422 16.0563L25.4558 27.8699L27.5772 25.7486L15.7635 13.9349L27.5771 2.12132Z"
+                    fill="#E8E0D3" />
+                </svg>
+              </button>
+              <img src="./src/image/letter-mother-phone.png" alt="Letter mothers death">
+            </div>
           </div>
         </div>
-        <div class="my-beginning__plate"></div>
-        <img class="visually-hidden" src="./src/image/pillar-my-beginning.png" alt="Pillar">
-        <div>
-          <img class="visually-hidden" src="./src/image/letter-mother.png" alt="Letter death mother">
-          <img class="visually-hidden" src="./src/image/coin-man.png" alt="Coin Men">
+        <div class="my-beginning__plate appear">
+          <img src="./src/image/plate-my-beginning.png" alt="Plate">
         </div>
-        <div class="my-beginning__death-visuals">
+        <img class="my-beginning__pillar appear" src="./src/image/pillar-my-beginning.png" alt="Pillar">
+        <div class="mother-letter-container appear">
+          <img class="my-beginning__open-letter" src="./src/image/letter-mother.png" alt="Letter death mother">
+          <img class="my-beginning__coin-man" src="./src/image/coin-man.png" alt="Coin Men">
+        </div>
+        <div class="my-beginning__death-visuals appear">
           <img class="my-beginning__grave" src="./src/image/grave.png" alt="Grave">
           <img class="my-beginning__leafes" src="./src/image/leafes.png" alt="leafes">
           <img class="my-beginning__coin-grave" src="./src/image/coin-grave.png" alt="Coin Grave">
           <img class="my-beginning__character-l" src="./src/image/character-l.png" alt="Character L">
         </div>
-        <p class="my-beginning__6-years-later">6 years later</p>
-        <article class="sub-story">
+        <p class="my-beginning__6-years-later appear">6 years later</p>
+        <article class="sub-story appear">
           <h3>Me and my father</h3>
           <div class="sub-story__text">
             <p><span class="bold">My father often has to travel around for work.</span> We have been in Paris for a while, he steps up to me and gives me a sum
@@ -144,66 +162,72 @@
             <p>I am a few months far into my studies and receive an unknown letter from the courrier <span class="translation">(mailman)</span>.</p>
           </div>
         </article>
-        <div class="my-beginning__letter-container">
-          <img class="visually-hidden" src="./src/image/coin-soldier.png" alt="Coin Soldier">
+        <div class="my-beginning__letter-container appear">
+          <img class="my-beginning__coin-soldier" src="./src/image/coin-soldier.png" alt="Coin Soldier">
           <div>
             <img class="my-beginning__letter" src="./src/image/letter.png" alt="Letter">
             <p>Open the letter <span class="one-line">to continue</span></p>
           </div>
         </div>
-        <div class="my-beginning__flowers">
+        <div class="my-beginning__flowers appear">
           <img class="my-beginning__dancy-flower" src="./src/image/dancy-flower.png" alt="Dancy flower">
           <img class="my-beginning__corn-flower" src="./src/image/corn-flower.png" alt="Corn flower">
           <img class="my-beginning__character-y" src="./src/image/character-y.png" alt="Character Y">
         </div>
       </section>
       <section class="normandy">
-        <div class="normandy__head-story-container">
-          <div class="head-story">
-            <h2>Normandy</h2>
-            <div class="head-story__text">
-              <p><span class="bold">This news I did not expect. I already have a lot of stress for financial reasons because I live in Paris and now this.</span>
-              Now a few days later I am quiting my studies and moving to Normandie where everything is much <span class="highlight">cheaper</span>. I now have to
-              find a new study, teacher is high on my list but after searching for a while I found <span class="highlight">nothing</span> finacially feasible.</p>
-              <p>I continue thinking, I have quite an interest in books which is why I wanted to become a teacher. It comes to mind,</p>
-              <p class="story__jump-out story__jump-out--red">I will become a book binder!</p>
-              <p>I look for a school and find one where I would study under Robert Macé. This study takes
-              <span class="highlight">7 years.</span></p>
+        <div class="normandy__head">
+          <div class="normandy__head-story-container">
+            <div class="head-story">
+              <h2>Normandy</h2>
+              <div class="head-story__text">
+                <p><span class="bold">This news I did not expect. I already have a lot of stress for financial reasons because I live in Paris and now this.</span>
+                Now a few days later I am quiting my studies and moving to Normandie where everything is much <span class="highlight">cheaper</span>. I now have to
+                find a new study, teacher is high on my list but after searching for a while I found <span class="highlight">nothing</span> finacially feasible.</p>
+                <p>I continue thinking, I have quite an interest in books which is why I wanted to become a teacher. It comes to mind,</p>
+                <p class="story__jump-out story__jump-out--red">I will become a book binder!</p>
+                <p>I look for a school and find one where I would study under Robert Macé. This study takes
+                <span class="highlight">7 years.</span></p>
+              </div>
             </div>
+            <div class="normandy__plate">
+              <img src="./src/image/plate-normandy.png" alt="Plate Normandy">
+            </div>
+            <p class="extra-text extra-text--normandy">I'm Shaking</p>
+            <img class="normandy__coin-bookshelf" src="./src/image/coin-bookshelf.png" alt="Coin bookshelf">
           </div>
-          <div class="normandy__plate">
-            <img src="./src/image/plate-normandy.png" alt="Plate Normandy">
+          <div class="normandy__normandy">
+            <img src="./src/image/normandy.png" alt="Normandy map">
           </div>
-          <p class="extra-text extra-text--normandy">I'm Shaking</p>
-          <img class="normandy__coin-bookshelf" src="./src/image/coin-bookshelf.png" alt="Coin bookshelf">
-          <img class="visually-hidden" src="./src/image/school.png" alt="School">
         </div>
-        <img class="visually-hidden" src="./src/image/coin-maid.png" alt="Coin maid">
+        <img class="normandy__coin-maid" src="./src/image/coin-maid.png" alt="Coin maid">
         <div class="normandy__reading-container">
           <img class="normandy__person-reading" src="./src/image/person-reading.png" alt="Person Reading">
           <img class="normandy__foggy-birds" src="./src/image/foggy-birds.png" alt="Foggy birds">
           <img class="normandy__character-s" src="./src/image/character-s.png" alt="Character S">
         </div>
-        <article class="normandy__sub-story">
-          <div class="sub-story__section">
-            <div>
-              <h3>My studies</h3>
-              <p class="normandy__year">Year 3</p>
+        <div class="normandy__sub-story-container">
+          <article class="normandy__sub-story">
+            <div class="sub-story__section">
+              <div>
+                <h3>My studies</h3>
+                <p class="normandy__year">Year 3</p>
+              </div>
+              <p class="normandy__text"><span class="bold">I think I have met the love of my life her name is Jeanne Rivière and she is a maid.</span> We have been on all kinds of dates
+              for the past month and I can't get her out of my mind. We are going on another date today. She will knock any minute
+              “Knock Knock” I open the door and ask if she wants to be my <span class="highlight highlight--black">girlfriend?</span> She happily says</p>
             </div>
-            <p class="normandy__text"><span class="bold">I think I have met the love of my life her name is Jeanne Rivière and she is a maid.</span> We have been on all kinds of dates
-            for the past month and I can't get her out of my mind. We are going on another date today. She will knock any minute
-            “Knock Knock” I open the door and ask if she wants to be my <span class="highlight highlight--black">girlfriend?</span> She happily says</p>
-          </div>
-          <img class="normandy__oui" src="./src/image/ouiiiiii.png" alt="Ouiiiiii">
-          <div class="sub-story__section">
-            <p class="normandy__year normandy__year--left">Year 7</p>
-            <p class="normandy__text">I have finally finished my studies. In the meantime, I have <span class="highlight highlight--black">married</span> Jeanne Rivière. We are ready to move to Paris for my
-            first job as a relieur <span class="translation">(book binder)</span> at a printing company.</p>
-          </div>
-          <div class="normandy__woman">
-            <img src="./src/image/woman.png" alt="Woman">
-          </div>
-        </article>
+            <img class="normandy__oui" src="./src/image/ouiiiiii.png" alt="Ouiiiiii">
+            <div class="sub-story__section sub-story__section--thin">
+              <p class="normandy__year normandy__year--left">Year 7</p>
+              <p class="normandy__text">I have finally finished my studies. In the meantime, I have <span class="highlight highlight--black">married</span> Jeanne Rivière. We are ready to move to Paris for my
+              first job as a relieur <span class="translation">(book binder)</span> at a printing company.</p>
+            </div>
+            <div class="normandy__woman">
+              <img src="./src/image/woman.png" alt="Woman">
+            </div>
+          </article>
+        </div>
       </section>
       <section class="bookbind">
         <div>

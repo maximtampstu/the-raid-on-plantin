@@ -51,47 +51,87 @@ const init = () => {
 
 init();
 */
-
-const init = () => {
-  //document.querySelector('.js').innerHTML = "Enabled";
+const navInteraction = () => {
 
   const $navButton = document.querySelector('.phone-button');
   const $navList = document.querySelector('.nav__list');
   const listItems = $navList.querySelectorAll("li");
   const $closeButton = document.querySelector('.nav__item--my-beginning button')
-
+  
   $navButton.classList.remove('visually-hidden');
   $navList.classList.add("visually-hidden");
-
+  
   const openNavigation = () => {
-    $navButton.setAttribute("aria-expanded", "true");
     $navList.classList.remove("visually-hidden");
     $navButton.classList.add('visually-hidden');
   }
-
+  
   const closeNavigation = () => {
-    $navButton.setAttribute("aria-expanded", "false");
     $navList.classList.add("visually-hidden");
     $navButton.classList.remove('visually-hidden');
   }
-
-  const handleClickLink = (item) => {
-    console.log("appel")
-  }
-
+  
   $navButton.addEventListener("click", openNavigation);
   $closeButton.addEventListener("click", closeNavigation);
   listItems.forEach(item => {
     item.addEventListener('click', () => {
       const link = item.querySelector('a');
-
+  
       if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
         closeNavigation();
       }
     });
   });
+
 }
 
+const appearEffect = (itemClass, showPercent) => {
+  const appearItems = document.querySelectorAll(itemClass);
+  console.log(appearItems)
+  appearItems.forEach(item => {
+    console.log(item.className)
+    gsap.set(item, { opacity: 0 })
+    gsap.to(item, {
+      opacity: 1,
+      duration: 2,
+      scrollTrigger: {
+        trigger: item,
+        start: `top ${showPercent}%`,
+      }
+    });
+  });
+}
 
+const letterMother = () => {
+
+  const $letterButton = document.querySelector('.letter-button');
+  const $letter = document.querySelector('.letter-container');
+  const $closeButton = document.querySelector('.letter-container button')
+
+  const $navButton = document.querySelector('.phone-button');
+
+  $letterButton.classList.remove('visually-hidden');
+  $letter.classList.add("visually-hidden");
+
+  const openNavigation = () => {
+    $letter.classList.remove("visually-hidden");
+    $navButton.classList.add('visually-hidden');
+  }
+
+  const closeNavigation = () => {
+    $letter.classList.add("visually-hidden");
+    $navButton.classList.remove('visually-hidden');
+  }
+
+  $letterButton.addEventListener("click", openNavigation);
+  $closeButton.addEventListener("click", closeNavigation);
+
+}
+
+const init = () => {
+  navInteraction();
+  letterMother();
+  appearEffect(".appear", 85);
+}
 
 init();
