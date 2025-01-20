@@ -12,6 +12,7 @@
   --font-size-32-48: clamp(2rem, 1.6575rem + 1.4612vw, 3rem);
   --font-size-32-56: clamp(2rem, 1.4863rem + 2.1918vw, 3.5rem);
   --font-size-36-48: clamp(2.25rem, 1.9932rem + 1.0959vw, 3rem);
+  --font-size-72-144: clamp(4.5rem, 2.9589rem + 6.5753vw, 9rem);
 }
 
 @font-face {
@@ -1534,36 +1535,175 @@ h3 {
 /* QUICK ENOUGH */
 
 .quick-enough{
-
+ margin-top: -1rem;
+ overflow-x: hidden;
 }
 
 .quick-enough__story{
   display: grid;
-  grid-template-columns: 1fr 25%;
+  grid-template-columns: 1fr 28%;
   grid-template-rows: repeat(4, auto);
 }
 
 .quick-enough .head-story{
   grid-column: 1 / span 2;
   grid-row: 3;
+
+  margin-top: 7rem;
+  margin-bottom: 9rem;
 }
 
 .quick-enough__plate{
   grid-column: 1 / span 2;
   grid-row: 1;
+
+  overflow-x: hidden;
+}
+
+.quick-enough__plate img{
+  width: 75rem;
+  margin-left: -3rem;
 }
 
 .quick-enough__knock{
   grid-column: 1;
   grid-row: 2;
+
+  margin-left: 2%;
+  margin-top: -1.25rem;
+
+  z-index: -1;
 }
 
 .quick-enough__snail{
   grid-column: 2;
   grid-row: 2;
+
+  margin-top: -2rem;
+
+  display: grid;
+}
+
+.quick-enough__snail img{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.quick-enough__snail-img{
+  max-width: 18rem;
+  margin-left: 1rem;
+}
+
+.quick-enough__character-t{
+  max-width: 14rem;
+  margin-left: 2rem;
+  margin-top: -1rem;
 }
 
 .quick-enough__but{
   grid-column: 1 / span 2;
   grid-row: 4;
+
+  font-family: "Archivo";
+  color: var(--color-blue);
+  font-size: var(--font-size-72-144);
+  text-transform: uppercase;
+  line-height: 90%;
+  text-align: center;
+}
+
+.cliff{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  overflow-x: hidden;
+  margin-top: 4rem;
+}
+
+.cliff__running-men{
+  grid-column: 1;
+  grid-row: 1;
+
+  margin-top: 55vh;
+  margin-left: -3rem;
+}
+
+.cliff__bookshelf{
+  grid-column: 2;
+  grid-row: 1;
+
+  margin-left: 4rem;
+}
+
+.cliff__list{
+  grid-column: 1 / span 2;
+  grid-row: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50vh;
+
+  color: var(--color-red);
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  margin-top: 30vh;
+}
+
+.cliff__text-1{
+  font-size: clamp(2.25rem, 1.8219rem + 1.8265vw, 3.5rem);
+  max-width: 37rem;
+}
+
+.cliff__text-2 {
+  font-size: clamp(2rem, 1.6195rem + 1.6235vw, 3.1111rem);
+  max-width: 37rem;
+}
+
+.cliff__text-3 {
+  font-size: clamp(1.7778rem, 1.4395rem + 1.4431vw, 2.7654rem);
+  max-width: 37rem;
+}
+
+.cliff__text-4 {
+  font-size: clamp(1.5802rem, 1.2796rem + 1.2828vw, 2.4582rem);
+  max-width: 37rem;
+}
+
+.cliff__text-5 {
+  font-size: clamp(1.4047rem, 1.1374rem + 1.1403vw, 2.185rem);
+  max-width: 37rem;
+}
+
+.cliff__text-6 {
+  font-size: clamp(1.2486rem, 1.011rem + 1.0136vw, 1.9423rem);
+  max-width: 37rem;
+}
+
+.cliff__text-7 {
+  font-size: clamp(1.1099rem, 0.8987rem + 0.901vw, 1.7264rem);
+  max-width: 37rem;
+}
+
+.cliff__text-8 {
+  font-size: clamp(0.9865rem, 0.7988rem + 0.8008vw, 1.5346rem);
+  max-width: 37rem;
+}
+
+.cliff__text-9 {
+  font-size: clamp(0.8769rem, 0.7101rem + 0.7119vw, 1.3641rem);
+  max-width: 37rem;
+}
+
+.cliff__text-10 {
+  font-size: clamp(0.7795rem, 0.6312rem + 0.6328vw, 1.2125rem);
+  max-width: 37rem;
+}
+
+.cliff__highlight{
+  color: var(--color-black);
+  font-family: 'Times New Roman', Times, serif;
 }
