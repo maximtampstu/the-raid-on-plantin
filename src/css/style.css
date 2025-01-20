@@ -1707,3 +1707,86 @@ h3 {
   color: var(--color-black);
   font-family: 'Times New Roman', Times, serif;
 }
+
+.cta{
+  height: 100dvh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-black);
+}
+
+.cta__text{
+  max-width: 28rem;
+  margin: 0 clamp(1rem, -1.8682rem + 12.2374vw, 9.375rem);
+}
+
+.cta h2{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(2.875rem, 2.4897rem + 1.6438vw, 4rem);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.cta__sub{
+  font-size: clamp(1.4375rem, 1.2449rem + 0.8219vw, 2rem);
+  font-weight: bold;
+  color: var(--color-red);
+  margin-top: 0.25rem;
+}
+
+.cta__highlight{
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--color-white);
+}
+
+.cta__body{
+  color: var(--color-white);
+  margin-top: 1rem;
+}
+
+.cta__buttons{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fancy-link {
+  border: solid 2px var(--color-white);
+
+  padding: 0.85rem 0.25rem;
+
+  place-self: start;
+}
+
+.fancy-link span {
+  border: solid 1px var(--color-white);
+
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: var(--font-size-16-20);
+
+  padding: 0.5rem 0.5rem;
+}
+
+.fancy-link--red {
+  border: solid 2px var(--color-red);
+
+  padding: 0.85rem 0.25rem;
+
+  place-self: start;
+}
+
+.fancy-link--red span {
+  border: solid 1px var(--color-red);
+
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--color-red);
+  text-transform: uppercase;
+  font-size: var(--font-size-16-20);
+
+  padding: 0.5rem 0.5rem;
+}
