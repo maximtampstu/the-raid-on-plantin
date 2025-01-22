@@ -1,67 +1,109 @@
-/*
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import '../css/reset.css'
+import '../css/style.css'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
-*/
 
 gsap.registerPlugin(ScrollTrigger);
 
-const navInteraction = () => {
+const sizeCheck = () => {
+  let mq = gsap.matchMedia();
+
+  mq.add("(min-width: 1160px)", () => {
+    navDesktop();
+    console.log(mq);
+  });
+
+  mq.add("(max-width: 1159px)", () => {
+    navPhone();
+    console.log(mq);
+  });
+
+}
+
+const navPhone = () => {
 
   const $navButton = document.querySelector('.phone-button');
   const $navList = document.querySelector('.nav__list');
+  const $navContainer = document.querySelector('.nav')
   const listItems = $navList.querySelectorAll("li");
-  const $closeButton = document.querySelector('.nav__item--my-beginning button')
-  
+  const $closeButton = document.querySelector('.nav__item--my-beginning button');
+  const $header = document.querySelector(".header");
+  const $body = document.querySelector('body');
+
   $navButton.classList.remove('visually-hidden');
-  $navList.classList.add("visually-hidden");
-  
+  $navContainer.classList.add("visually-hidden");
+  $header.style.top = "0px";
+
   const openNavigation = () => {
-    $navList.classList.remove("visually-hidden");
+    $navContainer.classList.remove("visually-hidden");
     $navButton.classList.add('visually-hidden');
+    $body.classList.add('no-scroll');
+    console.log("open phone")
   }
-  
+
   const closeNavigation = () => {
-    $navList.classList.add("visually-hidden");
+    $navContainer.classList.add("visually-hidden");
     $navButton.classList.remove('visually-hidden');
+    $body.classList.remove('no-scroll');
+    console.log("close phone")
   }
+
   
   $navButton.addEventListener("click", openNavigation);
   $closeButton.addEventListener("click", closeNavigation);
+
   listItems.forEach(item => {
     item.addEventListener('click', () => {
       const link = item.querySelector('a');
-  
+      
       if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
         closeNavigation();
       }
     });
   });
+  
+  window.addEventListener('click', (e) => {
+    if ($navButton.classList.contains("visually-hidden")){
+      if (!$navList.contains(e.target) && !$navButton.contains(e.target)) {
+        closeNavigation();
+      }
+    }
+  });
 
 }
 
-const phoneBar = (scrolled) => {
+const navDesktop = () => {
+  const $navButton = document.querySelector(".desktop-button");
+  const $navContainer = document.querySelector(".header");
+  const $logo = document.querySelector(".header__logo");
+  const $navList = document.querySelector('.nav__list');
+  const $arrowUp = document.querySelector('.desktop-button__arrow--up');
+  const $arrowDown = document.querySelector('.desktop-button__arrow--down');
+
+  $navContainer.style.top = "0px";
+  $logo.style.opacity = 1;
+  $navList.classList.remove("visually-hidden");
+  $arrowUp.setAttribute('opacity', 1);
+  $arrowDown.setAttribute('opacity', 0);
+
+  const toggleNavigation = () => {
+    console.log("toggle desktop")
+    if ($navContainer.style.top === "0px") {
+      $navContainer.style.top = "-65px";
+      $logo.style.opacity = 0;
+      $arrowUp.setAttribute('opacity', 0);
+      $arrowDown.setAttribute('opacity', 1);
+    } else {
+      $navContainer.style.top = "0px";
+      $logo.style.opacity = 1;
+      $arrowUp.setAttribute('opacity', 1);
+      $arrowDown.setAttribute('opacity', 0);
+    }
+  }
+
+  $navButton.addEventListener("click", toggleNavigation);
+}
+
+const barPhone = (scrolled) => {
   const canvas = document.querySelector(".phone-button__progress");
   const ctx = canvas.getContext("2d");
 
@@ -75,25 +117,34 @@ const phoneBar = (scrolled) => {
 
 }
 
+const barDesktop = (scrolled) => {
+  document.querySelector(".desktop-progress").style.width = scrolled + "%";
+}
+
 const progressBar = () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
 
-  phoneBar(scrolled)
+  if (window.innerWidth >= 1160) {
+    barDesktop(scrolled)
+  } else {
+    barPhone(scrolled)
+  }
 }
 
 const nav = () => {
-  navInteraction();
+  sizeCheck();
+
   document.addEventListener("scroll", progressBar);
 }
 
-const appearEffect = (itemClass, showPercent) => {
+const appearEffect = (itemClass, showPercent, appearOpacity) => {
   const appearItems = document.querySelectorAll(itemClass);
   appearItems.forEach(item => {
     gsap.set(item, { opacity: 0 })
     gsap.to(item, {
-      opacity: 1,
+      opacity: appearOpacity,
       duration: 2,
       scrollTrigger: {
         trigger: item,
@@ -101,6 +152,12 @@ const appearEffect = (itemClass, showPercent) => {
       }
     });
   });
+}
+
+const appear = () => {
+  appearEffect(".appear", 85, "100%");
+  appearEffect(".appear-late", 40, "100%");
+  appearEffect(".appear-80", 85, "80%");
 }
 
 const letterMother = () => {
@@ -156,9 +213,10 @@ const test = (e) => {
   element.src = "src/image/blueprint-living.png"
   element.style.position = "absolute";
   element.style.width = "5.75rem";
+  element.draggable = false;
   element.style.top = `${e.pageY - element.offsetWidth / 2}px`;
   element.style.left = `${e.pageX - element.offsetWidth / 2}px`;
-  
+
   document.querySelector(".blueprint__game").appendChild(element)
 }
 
@@ -168,7 +226,7 @@ const upl = () => {
 
 const blueprint = () => {
   document.querySelector(".blueprint__living--item").addEventListener("mousedown", test)
-  document.addEventListener("mousemove", moving(element))
+  document.addEventListener("mousemove", moving)
   document.addEventListener("mouseup", upl)
 }
 
@@ -208,7 +266,7 @@ const corrector = () => {
 
   document.querySelectorAll(".corrector__mistake").forEach(mistake => {
     mistake.addEventListener("click", () => {
-      if(mistake.style.color != "var(--color-red)"){
+      if (mistake.style.color != "var(--color-red)") {
         mistake.style.color = "var(--color-red)";
 
         const scoreTag = document.querySelector(".corrector__points")
@@ -216,7 +274,7 @@ const corrector = () => {
         score++
         scoreTag.textContent = score;
 
-        if(score >= 5){
+        if (score >= 5) {
           $screen3.classList.remove("visually-hidden");
           $screen2.classList.add('visually-hidden');
         }
@@ -232,15 +290,15 @@ const cliffMask = (maskClass, maskSize, maskContainer, maskStart, maskEnd) => {
   const mask = document.querySelector(maskClass);
 
   ScrollTrigger.create({
-    trigger: maskContainer, 
-    start: `top ${maskStart}`, 
-    end: `bottom ${maskEnd}`, 
+    trigger: maskContainer,
+    start: `top ${maskStart}`,
+    end: `bottom ${maskEnd}`,
     onEnter: () => mask.classList.add("mask__active"),
     onLeave: () => mask.classList.remove("mask__active"),
     onEnterBack: () => mask.classList.add("mask__active"),
     onLeaveBack: () => mask.classList.remove("mask__active"),
   });
-  
+
   gsap.to(mask, {
     maskImage: `radial-gradient(circle, transparent ${maskSize}%, black ${maskSize + 2}%)`,
     webkitMaskImage: `radial-gradient(circle, transparent ${maskSize}%, black ${maskSize + 2}%)`,
@@ -255,13 +313,13 @@ const cliffMask = (maskClass, maskSize, maskContainer, maskStart, maskEnd) => {
 }
 
 const cliffSound = (soundContainer, soundPath) => {
-  const sound = new Audio(`public/sounds/${soundPath}`);
+  const sound = new Audio(`${import.meta.env.BASE_URL}sounds/${soundPath}`);
 
   ScrollTrigger.create({
-    trigger: soundContainer, 
+    trigger: soundContainer,
     start: "top 40%",
     onEnter: () => {
-      sound.play(); 
+      sound.play();
     },
   });
 }
@@ -275,7 +333,7 @@ const cliff = () => {
   cliffSound(".cliff__text-6", "invation.wav")
   cliffSound(".cliff__text-8", "steps.mp3")
 
-  gsap.set(".cta__text", { x: window.innerWidth, opacity: 0})
+  gsap.set(".cta__text", { x: window.innerWidth, opacity: 0 })
   gsap.to(".cta__text", {
     x: 0,
     opacity: 1,
@@ -293,12 +351,12 @@ const cliff = () => {
 const init = () => {
   nav();
   letterMother();
-  appearEffect(".appear", 85);
-  appearEffect(".appear-late", 40);
+  appear(); //DONE
   //binding();
   //blueprint();
-  corrector();
-  cliff();
+  corrector(); //DONE
+  cliff(); //DONE
+
 }
 
 init();
