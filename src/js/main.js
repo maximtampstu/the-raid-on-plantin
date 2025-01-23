@@ -1,8 +1,9 @@
-import '../css/reset.css'
-import '../css/style.css'
-
+import '../css/reset.css';
+import '../css/style.css';
+import { DotLottie } from '@lottiefiles/dotlottie-web';
 
 gsap.registerPlugin(ScrollTrigger);
+
 
 const sizeCheck = () => {
   let mq = gsap.matchMedia();
@@ -47,22 +48,22 @@ const navPhone = () => {
     console.log("close phone")
   }
 
-  
+
   $navButton.addEventListener("click", openNavigation);
   $closeButton.addEventListener("click", closeNavigation);
 
   listItems.forEach(item => {
     item.addEventListener('click', () => {
       const link = item.querySelector('a');
-      
+
       if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
         closeNavigation();
       }
     });
   });
-  
+
   window.addEventListener('click', (e) => {
-    if ($navButton.classList.contains("visually-hidden")){
+    if ($navButton.classList.contains("visually-hidden")) {
       if (!$navList.contains(e.target) && !$navButton.contains(e.target)) {
         closeNavigation();
       }
@@ -186,6 +187,38 @@ const letterMother = () => {
 
 }
 
+const envelope = () => {
+  let played = 0;
+
+  const dotLottie = new DotLottie({
+    autoplay: false,
+    loop: false,
+    canvas: document.querySelector("#anim-envelope"),
+    src: "./animation/envelope/envelope.json",
+    width: 400,
+  });
+
+  document.querySelector(".my-beginning__letter").addEventListener("click", () => {
+    if (played === 0) {
+      dotLottie.play();
+      played = 1;
+    }
+  });
+
+  console.log(dotLottie);
+
+  dotLottie.addEventListener("frame", () => {
+    console.log("frame");
+  });
+
+  dotLottie.addEventListener("render", () => {
+    console.log("render");
+  });
+
+  dotLottie.addEventListener("complete", () => {
+    console.log("done");
+  });
+}
 
 
 
@@ -201,33 +234,75 @@ const binding = () => {
   }
 }
 
-
-
-const moving = (e) => {
-  element.style.top = `${e.pageY - element.offsetWidth / 2}px`;
-  element.style.left = `${e.pageX - element.offsetWidth / 2}px`;
-}
-const element = document.createElement("img");
-
-const test = (e) => {
-  element.src = "src/image/blueprint-living.png"
-  element.style.position = "absolute";
-  element.style.width = "5.75rem";
-  element.draggable = false;
-  element.style.top = `${e.pageY - element.offsetWidth / 2}px`;
-  element.style.left = `${e.pageX - element.offsetWidth / 2}px`;
-
-  document.querySelector(".blueprint__game").appendChild(element)
-}
-
-const upl = () => {
-  document.querySelector(".blueprint__game").removeChild(element)
-}
+const blueprintItemList = ["living", "corner", "childeren", "studio"]
+let blueprintCorrectList = [];
+let blueprintItemSelected = "";
 
 const blueprint = () => {
-  document.querySelector(".blueprint__living--item").addEventListener("mousedown", test)
-  document.addEventListener("mousemove", moving)
-  document.addEventListener("mouseup", upl)
+  blueprintItemList.forEach(item => {
+    document.querySelector(`.blueprint__${item}--item`).addEventListener("click", () => {
+      if (!blueprintCorrectList.includes(item)) {
+        blueprintItemList.forEach(item => {
+          if (!blueprintCorrectList.includes(item)) {
+            document.querySelector(`.blueprint__${item}--blink`).classList.remove("opacity-0")
+            document.querySelector(`.blueprint__${item}--blink`).classList.add("blueprint__blinking")
+            document.querySelector(`.blueprint__${item}--item`).classList.add("opacity-50")
+          }
+        });
+        document.querySelector(`.blueprint__${item}--item`).classList.remove("opacity-50")
+        document.querySelector(`.blueprint`).classList.remove("blueprint__wrong")
+        blueprintItemSelected = item;
+      }
+    })
+  });
+
+  blueprintItemList.forEach(item => {
+    document.querySelector(`.blueprint__${item}--map`).addEventListener("click", () => {
+      if (blueprintItemSelected != "") {
+        if (item === blueprintItemSelected) {
+          document.querySelector(`.blueprint__${item}--map`).classList.remove("opacity-0")
+          document.querySelector(`.blueprint__${item}--item`).classList.add("opacity-10")
+          blueprintCorrectList.push(item)
+          blueprintItemList.forEach(item => {
+            if (!blueprintCorrectList.includes(item)) {
+              document.querySelector(`.blueprint__${item}--blink`).classList.add("opacity-0")
+              document.querySelector(`.blueprint__${item}--blink`).classList.remove("blueprint__blinking")
+              document.querySelector(`.blueprint__${item}--item`).classList.remove("opacity-50")
+            }
+          });
+          blueprintItemSelected = "";
+
+          if (blueprintCorrectList.length === 4) {
+            document.querySelector(".blueprint p").textContent = "WELL DONE, thanks for the help!"
+            document.querySelector(".blueprint p").classList.add("blueprint__done")
+          }
+        } else {
+          document.querySelector(`.blueprint`).classList.add("blueprint__wrong")
+          blueprintItemList.forEach(item => {
+            if (!blueprintCorrectList.includes(item)) {
+              document.querySelector(`.blueprint__${item}--blink`).classList.add("opacity-0")
+              document.querySelector(`.blueprint__${item}--blink`).classList.remove("blueprint__blinking")
+              document.querySelector(`.blueprint__${item}--item`).classList.remove("opacity-50")
+            }
+          });
+          blueprintItemSelected = "";
+        }
+      }
+    })
+  });
+
+  /*
+  window.addEventListener('click', (e) => {
+    if (blueprintItemSelected != "") {
+      blueprintItemList.forEach(item => {
+        if (!blueprintCorrectList.includes(item)) {
+          document.querySelector(`.blueprint__${item}--blink`).classList.add("opacity-0")
+          document.querySelector(`.blueprint__${item}--blink`).classList.remove("blueprint__blinking")
+          document.querySelector(`.blueprint__${item}--item`).classList.remove("opacity-50")
+        }
+      });
+    }
+  });*/
 }
 
 const startCorrector = () => {
@@ -250,7 +325,6 @@ const againCorrector = () => {
   $screen2.classList.remove("visually-hidden");
   $screen3.classList.add('visually-hidden');
 }
-
 
 const corrector = () => {
   const $screen1 = document.querySelector(".corrector__screen--1");
@@ -352,10 +426,11 @@ const init = () => {
   nav();
   letterMother();
   appear(); //DONE
+  envelope();
   //binding();
-  //blueprint();
+  blueprint(); //DONE
   corrector(); //DONE
-  cliff(); //DONE
+  //cliff(); //DONE
 
 }
 

@@ -3,7 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./src/image/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/image/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./src/image/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./src/image/favicon/site.webmanifest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The raid on Plantin</title>
 </head>
@@ -156,7 +159,7 @@
       <img class="hero__character-i" src="./src/image/character-i.png" alt="I">
       <img class="hero__pillar" src="./src/image/pillar-hero.png" alt="Pillar">
     </section>
-    <section id="my-beginning" class="my-beginning ">
+    <section id="my-beginning" class="my-beginning">
       <div class="head-story appear">
         <div class="head-story__heading">
           <h2>My Beginning</h2>
@@ -228,7 +231,7 @@
       <div class="my-beginning__letter-container">
         <img class="my-beginning__coin-soldier appear" src="./src/image/coin-soldier.png" alt="Coin Soldier">
         <div>
-          <img class="my-beginning__letter appear" src="./src/image/letter.png" alt="Letter">
+          <canvas class="my-beginning__letter" id="anim-envelope" height="100" width="300"></canvas>
           <p>Open the letter <span class="one-line">to continue</span></p>
         </div>
       </div>
@@ -376,40 +379,44 @@
           <p>Help me build my printing business</p>
           <div class="blueprint__game">
             <div class="blueprint__items blueprint__items--1">
-              <img draggable="false" class="blueprint__living blueprint__living--item"
+              <img class="blueprint__living blueprint__living--item"
                 src="./src/image/blueprint-living.png" alt="Living part">
-              <img class="blueprint__studio blueprint-studio--item" src="./src/image/blueprint-studio.png" alt="Studio">
+              <img class="blueprint__studio blueprint__studio--item" src="./src/image/blueprint-studio.png" alt="Studio">
             </div>
             <div class="blueprint__map">
               <div class="blueprint__place-holder blueprint__place-holder--childeren">
-                <img class="blueprint__childeren blueprint-childeren--place"
+                <img class="blueprint__childeren blueprint__childeren--place"
                   src="./src/image/blueprint-childeren-place.png" alt="Childeren houses place">
-                <img class="blueprint__childeren blueprint-childeren--map opacity-0"
+                <img class="blueprint__childeren blueprint__childeren--map opacity-0"
                   src="./src/image/blueprint-childeren.png" alt="Houses for childeren">
+                <img class="blueprint__childeren blueprint__childeren--blink opacity-0" src="./src/image/blueprint-childeren-blink.png" alt="Childeren houses blink">
               </div>
               <div class="blueprint__place-holder blueprint__place-holder--corner">
-                <img class="blueprint__corner blueprint-corner--place" src="./src/image/blueprint-corner-place.png"
+                <img class="blueprint__corner blueprint__corner--place" src="./src/image/blueprint-corner-place.png"
                   alt="Corner house place">
-                <img class="blueprint__corner blueprint-corner--map opacity-0" src="./src/image/blueprint-corner.png"
+                <img class="blueprint__corner blueprint__corner--map opacity-0" src="./src/image/blueprint-corner.png"
                   alt="Corner house">
+                <img class="blueprint__corner blueprint__corner--blink opacity-0" src="./src/image/blueprint-corner-blink.png" alt="Corner house blink">
               </div>
               <div class="blueprint__place-holder blueprint__place-holder--living">
-                <img class="blueprint__living blueprint-living--place" src="./src/image/blueprint-living-place.png"
+                <img class="blueprint__living blueprint__living--place" src="./src/image/blueprint-living-place.png"
                   alt="Living part place">
-                <img class="blueprint__living blueprint-living--map opacity-0" src="./src/image/blueprint-living.png"
+                <img class="blueprint__living blueprint__living--map opacity-0" src="./src/image/blueprint-living.png"
                   alt="Living part">
+                <img class="blueprint__living blueprint__living--blink opacity-0" src="./src/image/blueprint-living-blink.png" alt="Living part blink">
               </div>
               <div class="blueprint__place-holder blueprint__place-holder--studio">
-                <img class="blueprint__studio blueprint-studio--place" src="./src/image/blueprint-studio-place.png"
+                <img class="blueprint__studio blueprint__studio--place" src="./src/image/blueprint-studio-place.png"
                   alt="Studio Place">
-                <img class="blueprint__studio blueprint-studio--map opacity-0" src="./src/image/blueprint-studio.png"
+                <img class="blueprint__studio blueprint__studio--map opacity-0" src="./src/image/blueprint-studio.png"
                   alt="Studio">
+                <img class="blueprint__studio blueprint__studio--blink opacity-0" src="./src/image/blueprint-studio-blink.png" alt="Studio blink">
               </div>
             </div>
             <div class="blueprint__items blueprint__items--2">
-              <img class="blueprint__corner blueprint-corner--item" src="./src/image/blueprint-corner.png"
+              <img class="blueprint__corner blueprint__corner--item" src="./src/image/blueprint-corner.png"
                 alt="Corner house">
-              <img class="blueprint__childeren blueprint-childeren--item" src="./src/image/blueprint-childeren.png"
+              <img class="blueprint__childeren blueprint__childeren--item" src="./src/image/blueprint-childeren.png"
                 alt="Houses for childeren">
             </div>
           </div>
@@ -503,7 +510,7 @@
           </div>
         </div>
         <div class="corrector">
-          <img class="corrector__paper corrector__paper--horizontal" src="./src/image/corrector-paper.png"
+          <img class="corrector__paper" src="./src/image/corrector-paper.png"
             alt="Corrector Paper">
           <div class="corrector__screen corrector__screen--1 ">
             <p class="corrector__dare">Would uou be able to work as a Spelling Corector?</p>
@@ -957,7 +964,6 @@
     </section>
   </main>
   <footer>
-
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
