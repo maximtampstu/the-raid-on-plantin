@@ -7,110 +7,50 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 gsap.registerPlugin(ScrollTrigger);
 
 let pageHeight = document.body.scrollHeight;
-console.log(pageHeight);
-console.log(document.documentElement.scrollHeight)
-console.log(document.documentElement.clientHeight)
 
 document.querySelector(".lock--1").classList.add("visually-hidden");
-//document.querySelector(".lock--2").classList.add("visually-hidden");
+document.querySelector(".lock--2").classList.add("visually-hidden");
 
-const sizeCheck = () => {
-  let mq = gsap.matchMedia();
 
-  mq.add("(min-width: 1160px)", () => {
-    navDesktop();
-    console.log(mq);
-  });
 
-  mq.add("(max-width: 1159px)", () => {
-    navPhone();
-    console.log(mq);
-  });
+/* NAV */
 
-}
+const $body = document.querySelector('body');
+const $header = document.querySelector(".header");
+const $navContainer = document.querySelector('.nav')
+const $navList = document.querySelector('.nav__list');
+const listItems = $navList.querySelectorAll("li");
+const $navButtonDesktop = document.querySelector(".desktop-button");
+const $navButtonPhone = document.querySelector('.phone-button');
+const $closeButtonPhone = document.querySelector('.nav__item--my-beginning button');
+const $logo = document.querySelector(".header__logo");
+const $arrowUp = document.querySelector('.desktop-button__arrow--up');
+const $arrowDown = document.querySelector('.desktop-button__arrow--down');
 
 const navPhone = () => {
-
-  const $navButton = document.querySelector('.phone-button');
-  const $navList = document.querySelector('.nav__list');
-  const $navContainer = document.querySelector('.nav')
-  const listItems = $navList.querySelectorAll("li");
-  const $closeButton = document.querySelector('.nav__item--my-beginning button');
-  const $header = document.querySelector(".header");
-  const $body = document.querySelector('body');
-
-  $navButton.classList.remove('visually-hidden');
+  $navButtonPhone.classList.remove('visually-hidden');
   $navContainer.classList.add("visually-hidden");
   $header.style.top = "0px";
-
-  const openNavigation = () => {
-    $navContainer.classList.remove("visually-hidden");
-    $navButton.classList.add('visually-hidden');
-    $body.classList.add('no-scroll');
-    console.log("open phone")
-  }
-
-  const closeNavigation = () => {
-    $navContainer.classList.add("visually-hidden");
-    $navButton.classList.remove('visually-hidden');
-    $body.classList.remove('no-scroll');
-    console.log("close phone")
-  }
-
-
-  $navButton.addEventListener("click", openNavigation);
-  $closeButton.addEventListener("click", closeNavigation);
-
-  listItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const link = item.querySelector('a');
-
-      if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
-        closeNavigation();
-      }
-    });
-  });
-
-  window.addEventListener('click', (e) => {
-    if ($navButton.classList.contains("visually-hidden")) {
-      if (!$navList.contains(e.target) && !$navButton.contains(e.target)) {
-        closeNavigation();
-      }
-    }
-  });
-
 }
 
 const navDesktop = () => {
-  const $navButton = document.querySelector(".desktop-button");
-  const $navContainer = document.querySelector(".header");
-  const $logo = document.querySelector(".header__logo");
-  const $navList = document.querySelector('.nav__list');
-  const $arrowUp = document.querySelector('.desktop-button__arrow--up');
-  const $arrowDown = document.querySelector('.desktop-button__arrow--down');
-
-  $navContainer.style.top = "0px";
+  $header.style.top = "0px";
   $logo.style.opacity = 1;
   $navList.classList.remove("visually-hidden");
   $arrowUp.setAttribute('opacity', 1);
   $arrowDown.setAttribute('opacity', 0);
+}
 
-  const toggleNavigation = () => {
-    console.log("toggle desktop")
-    if ($navContainer.style.top === "0px") {
-      $navContainer.style.top = "-65px";
-      $logo.style.opacity = 0;
-      $arrowUp.setAttribute('opacity', 0);
-      $arrowDown.setAttribute('opacity', 1);
-    } else {
-      $navContainer.style.top = "0px";
-      $logo.style.opacity = 1;
-      $arrowUp.setAttribute('opacity', 1);
-      $arrowDown.setAttribute('opacity', 0);
-    }
-  }
+const nav = () => {
+  let mq = gsap.matchMedia();
 
-  $navButton.addEventListener("click", toggleNavigation);
+  mq.add("(min-width: 1160px)", () => {
+    navDesktop();
+  });
+
+  mq.add("(max-width: 1159px)", () => {
+    navPhone();
+  });
 }
 
 const barPhone = (scrolled) => {
@@ -124,7 +64,6 @@ const barPhone = (scrolled) => {
   ctx.lineWidth = 12;
   ctx.strokeStyle = "#E8E0D3";
   ctx.stroke();
-
 }
 
 const barDesktop = (scrolled) => {
@@ -143,11 +82,57 @@ const progressBar = () => {
   }
 }
 
-const nav = () => {
-  sizeCheck();
-
-  document.addEventListener("scroll", progressBar);
+const toggleNavigationDesktop = () => {
+  if ($header.style.top === "0px") {
+    $header.style.top = "-65px";
+    $logo.style.opacity = 0;
+    $arrowUp.setAttribute('opacity', 0);
+    $arrowDown.setAttribute('opacity', 1);
+  } else {
+    $header.style.top = "0px";
+    $logo.style.opacity = 1;
+    $arrowUp.setAttribute('opacity', 1);
+    $arrowDown.setAttribute('opacity', 0);
+  }
 }
+
+const openNavigationPhone = () => {
+  $navContainer.classList.remove("visually-hidden");
+  $navButtonPhone.classList.add('visually-hidden');
+  $body.classList.add('no-scroll');
+}
+
+const closeNavigationPhone = () => {
+  $navContainer.classList.add("visually-hidden");
+  $navButtonPhone.classList.remove('visually-hidden');
+  $body.classList.remove('no-scroll');
+}
+
+document.addEventListener("scroll", progressBar);
+$navButtonDesktop.addEventListener("click", toggleNavigationDesktop);
+$navButtonPhone.addEventListener("click", openNavigationPhone);
+$closeButtonPhone.addEventListener("click", closeNavigationPhone);
+
+listItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const link = item.querySelector('a');
+    if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
+      closeNavigationPhone();
+    }
+  });
+});
+
+window.addEventListener('click', (e) => {
+  if ($navButtonPhone.classList.contains("visually-hidden")) {
+    if (!$navList.contains(e.target) && !$navButtonPhone.contains(e.target)) {
+      closeNavigationPhone();
+    }
+  }
+});
+
+
+
+/* APPEAR */
 
 const appearEffect = (itemClass, showPercent, appearOpacity) => {
   const appearItems = document.querySelectorAll(itemClass);
@@ -170,6 +155,10 @@ const appear = () => {
   appearEffect(".appear-late", 40, "100%");
   appearEffect(".appear-80", 85, "80%");
 }
+
+
+
+/* LETTER MOTHER */
 
 const letterMother = () => {
 
@@ -197,44 +186,259 @@ const letterMother = () => {
 
 }
 
-const envelope = () => {
-  let played = 0;
 
+
+/* ENVELOPE */
+
+const envelope = () => {
   const dotLottie = new DotLottie({
     autoplay: false,
     loop: false,
     canvas: document.querySelector("#anim-envelope"),
     src: "./animation/envelope/envelope.json",
-    width: 400,
   });
 
   document.querySelector(".my-beginning__letter").addEventListener("click", () => {
-    if (played === 0) {
-      dotLottie.play();
-      played = 1;
-    }
+    dotLottie.play();
   });
 
   dotLottie.addEventListener("complete", () => {
     document.querySelector(".lock--1").classList.remove("visually-hidden");
     document.querySelector(".my-beginning__letter-container p").innerHTML = "&darr;   Keep on scrolling   &darr;"
     ScrollTrigger.refresh();
+    bindingSetup()
   });
 }
 
 
 
-const binding = () => {
-  const topList = document.querySelector(".bookbind__list--top ul");
-  console.log(Math.floor(topList.offsetWidth / 80))
-  for (let i = 0; i < Math.floor(topList.offsetWidth / 80); i++) {
-    const circle = document.createElement("li")
-    circle.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="16.3334" cy="16" r="16" fill="#232321"/>
-      </svg>`
-    topList.appendChild(circle);
+/* BINDING */
+
+const canvasBinder = document.querySelector(".bookbind__canvas");
+canvasBinder.width = document.querySelector(".bookbind__width").offsetWidth;
+const ctxBinder = canvasBinder.getContext("2d");
+
+let binderTopList = [];
+let binderBottomList = [];
+let bindingComplete = 0;
+let mouseX = 0;
+let mouseY = 0;
+let bindingToConnect = Number.POSITIVE_INFINITY;
+let bindsDone = 0;
+
+class BindCircle{
+  constructor(xPos, yPos, position){
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.position = position
+    this.size = 16;
+    this.selected = 0;
+    this.conected = 0;
+    this.xPosTo = 0;
+    this.yPosTo = 0;
+  }
+
+  display(){
+    ctxBinder.beginPath();
+    ctxBinder.arc(this.xPos, this.yPos, this.size, 0, 2 * Math.PI);
+    ctxBinder.fillStyle = "#232321";
+    ctxBinder.fill();
+
+    if(this.selected === 1){
+      ctxBinder.beginPath();
+      ctxBinder.moveTo(this.xPos, this.yPos);
+      ctxBinder.lineTo(mouseX, mouseY);
+
+      ctxBinder.lineWidth = 10;
+      ctxBinder.strokeStyle = "#232321";
+      ctxBinder.stroke();
+    }
+
+    if(this.conected === 1){
+      ctxBinder.beginPath();
+      ctxBinder.moveTo(this.xPos, this.yPos);
+      ctxBinder.lineTo(this.xPosTo, this.yPosTo);
+
+      ctxBinder.lineWidth = 10;
+      ctxBinder.strokeStyle = "#232321";
+      ctxBinder.stroke();
+    }
+    
   }
 }
+
+const bindSetTotal = (circleAmount) => {
+  if(circleAmount > 4){
+    bindingToConnect = 5;
+  } else {
+    bindingToConnect = circleAmount;
+  }
+  
+  if (bindingToConnect === 1){
+    document.querySelector(".bookbind__help").innerHTML = `Make <span class="bookbind__amount">0</span> connection between top and bottom dots.`;
+  } else {
+    document.querySelector(".bookbind__amount").textContent = bindingToConnect;
+  }
+}
+
+const bindingSetup = () => {
+  let circleAmount = 0;
+
+  if (Math.floor(canvasBinder.width / 100) >= 12){
+    circleAmount = 12;
+  } else {
+    circleAmount = Math.floor(canvasBinder.width / 100);
+  }
+
+  for (let i = 0; i < circleAmount +1; i++) {
+    binderTopList.push(new BindCircle(16 + (i * (canvasBinder.width - 32) / circleAmount), 48, "top"))
+    binderBottomList.push(new BindCircle(16 + (i * (canvasBinder.width - 32) / circleAmount), canvasBinder.height - 48, "bottom"))
+  }
+
+  bindSetTotal(circleAmount + 1)
+}
+
+const bindingDraw = () => {
+  ctxBinder.clearRect(0, 0, canvasBinder.width, canvasBinder.height);
+  
+  binderTopList.forEach(item => {
+    item.display()
+  });
+  binderBottomList.forEach(item => {
+    item.display()
+  });
+  
+  requestAnimationFrame(bindingDraw)
+}
+
+const bindingResize = () => {
+  canvasBinder.width = 0;
+  canvasBinder.width = document.querySelector(".bookbind__width").offsetWidth;
+
+  binderTopList = [];
+  binderBottomList = [];
+
+  bindingSetup()
+}
+
+
+const binding = () => {
+  bindingSetup()
+  bindingDraw()
+}
+
+const getCanvasCoordinates = (e) => {
+  const rect = canvasBinder.getBoundingClientRect();
+  let x, y;
+  
+  if (e.touches) {
+    x = e.touches[0].clientX - rect.left;
+    y = e.touches[0].clientY - rect.top;
+  } else {
+    x = e.offsetX;
+    y = e.offsetY;
+  }
+  
+  mouseX = x;
+  mouseY = y;
+  
+  return { x, y };
+};
+
+const handleMousedownBinding = (e) => {
+  const { x, y } = getCanvasCoordinates(e);
+  
+  binderTopList.forEach(circle => {
+    if (binderTopList.every(circle => circle.selected === 0)){
+      
+    }
+    if(circle.conected === 0){
+      if (Math.sqrt(Math.pow(circle.xPos - x, 2) + Math.pow(circle.yPos - y, 2)) < circle.size) {
+        circle.selected = 1;
+      }
+    }
+  });
+  binderBottomList.forEach(circle => {
+    if (circle.conected === 0) {
+      if (Math.sqrt(Math.pow(circle.xPos - x, 2) + Math.pow(circle.yPos - y, 2)) < circle.size) {
+        circle.selected = 1;
+      }
+    }
+  });
+  
+  e.preventDefault();
+}
+
+const bindCheck = (circleFrom, circleTo, e) => {
+  const { x, y } = getCanvasCoordinates(e);
+  
+  if (Math.sqrt(Math.pow(circleTo.xPos - x, 2) + Math.pow(circleTo.yPos - y, 2)) < circleTo.size) {
+    if(circleTo.conected === 0){
+      circleFrom.conected = 1;
+      circleTo.conected = 1;
+      circleFrom.xPosTo = circleTo.xPos;
+      circleFrom.yPosTo = circleTo.yPos;
+      circleTo.xPosTo = circleFrom.xPos;
+      circleTo.yPosTo = circleFrom.yPos;
+      bindsDone++;
+    }
+  }
+}
+
+const bindDoneCheck = () => {
+  if(bindsDone >= bindingToConnect){
+    bindingComplete = 1;
+    
+    document.querySelector(".bookbind__continue").textContent = "Well done";
+    document.querySelector(".bookbind__continue").style.textAlign = "center";
+    document.querySelector(".bookbind__text h2").innerHTML = "&darr; Continue scrolling &darr;";
+    document.querySelector(".bookbind__help").innerHTML = `Or keep connecting <span class="bookbind__amount visually-hidden">0</span>`;
+    document.querySelector(".bookbind__help").style.textAlign = "center";
+    document.querySelector(".lock--2").classList.remove("visually-hidden");
+    ScrollTrigger.refresh();
+  }
+}
+
+const handleMouseupBinding = (e) => {
+  
+  binderTopList.forEach(circle => {
+    if(circle.selected === 1){
+      binderBottomList.forEach(circle2 => {
+        bindCheck(circle, circle2, e);
+      });
+    }
+    circle.selected = 0;
+  });
+  
+  binderBottomList.forEach(circle => {
+    if (circle.selected === 1) {
+      binderTopList.forEach(circle2 => {
+        bindCheck(circle, circle2, e);
+      });
+    }
+    circle.selected = 0;
+  });
+  
+  if(bindingComplete === 0){
+    bindDoneCheck()
+  }
+}
+
+const handleMousemoveBinding = (e) => {
+  const { x, y } = getCanvasCoordinates(e);
+}
+
+canvasBinder.addEventListener("mousedown", handleMousedownBinding);
+canvasBinder.addEventListener("mouseup", handleMouseupBinding);
+canvasBinder.addEventListener("touchstart", handleMousedownBinding);
+canvasBinder.addEventListener("touchend", handleMouseupBinding);
+canvasBinder.addEventListener("mousemove", handleMousemoveBinding);
+canvasBinder.addEventListener("touchmove", handleMousemoveBinding);
+window.addEventListener('resize', bindingResize);
+
+
+
+/* BLUE PRINT */
 
 const blueprint = () => {
   const blueprintItemList = ["living", "corner", "childeren", "studio"]
@@ -292,20 +496,11 @@ const blueprint = () => {
       }
     })
   });
-
-  /*
-  window.addEventListener('click', (e) => {
-    if (blueprintItemSelected != "") {
-      blueprintItemList.forEach(item => {
-        if (!blueprintCorrectList.includes(item)) {
-          document.querySelector(`.blueprint__${item}--blink`).classList.add("opacity-0")
-          document.querySelector(`.blueprint__${item}--blink`).classList.remove("blueprint__blinking")
-          document.querySelector(`.blueprint__${item}--item`).classList.remove("opacity-50")
-        }
-      });
-    }
-  });*/
 }
+
+
+
+/* CORRECTOR */
 
 const startCorrector = () => {
   const $screen1 = document.querySelector(".corrector__screen--1");
@@ -361,6 +556,10 @@ const corrector = () => {
 
 
 }
+
+
+
+/* CLIFFHANGER */
 
 const cliffMask = (maskClass, maskSize, maskContainer, maskStart, maskEnd) => {
   const mask = document.querySelector(maskClass);
@@ -424,16 +623,36 @@ const cliff = () => {
   });
 }
 
+
+
+/* INIT */
+
+
+const $firstLock = document.querySelector(".lock--1")
+
+const observer = new MutationObserver(() => {
+  if (!$firstLock.classList.contains("visually-hidden")) {
+    canvasBinder.width = 0;
+    canvasBinder.width = document.querySelector(".bookbind__width").offsetWidth;
+
+    binderTopList = [];
+    binderBottomList = [];
+    binding(); 
+  }
+});
+
 const init = () => {
-  nav();
+  nav(); //DONE
   letterMother();
   appear(); //DONE
   envelope();
-  //binding();
+
+  observer.observe($firstLock, { attributes: true, attributeFilter: ["class"] }); 
+  binding();
+
   blueprint(); //DONE
   corrector(); //DONE
-  //cliff(); //DONE
-
+  cliff(); //DONE
 }
 
 init();

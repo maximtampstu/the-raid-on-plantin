@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Archivo";
-  src: url(./font/archivo/archivo-black.woff2);
+  src: url(/font/archivo/archivo-black.woff2);
 }
 
 img {
@@ -171,10 +171,13 @@ p {
   fill: var(--color-red);
 }
 
+.nav__locked{
+  pointer-events: none;
+}
+
 .nav__locked p {
   color: var(--color-white);
   opacity: 75%;
-  pointer-events: none;
 }
 
 @media (max-width: 1159px) {
@@ -315,6 +318,8 @@ p {
     fill: var(--color-black);
   }
 }
+
+
 
 /* HERO */
 
@@ -735,6 +740,7 @@ h3 {
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 
   max-width: 41.25rem;
@@ -742,7 +748,9 @@ h3 {
 }
 
 .my-beginning__letter{
-  width: 400px;
+  margin-top: -35%;
+  width: 100%;
+  z-index: 30;
 }
 
 .my-beginning__letter-container p {
@@ -928,7 +936,7 @@ h3 {
   }
 
   .my-beginning .head-story {
-    margin-left: 3rem;
+    margin-left: 6rem;
   }
 
   .my-beginning__1528 {
@@ -1029,6 +1037,10 @@ h3 {
   .my-beginning__letter-container div {
     grid-column: 1;
     grid-row: 1;
+  }
+
+  .my-beginning__letter{
+    margin-top: -17rem;
   }
 
   .my-beginning__coin-soldier {
@@ -1260,6 +1272,7 @@ h3 {
   border: 4px solid rgba(36, 97, 166, 0.75);
 
   margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  margin-bottom: 1rem;
   padding: 1rem;
 
   display: grid;
@@ -1270,7 +1283,7 @@ h3 {
 }
 
 .bookbind h2 {
-  font-size: 2.625rem;
+  font-size: var(--font-size-32-48);
   grid-row: 2;
 }
 
@@ -1287,7 +1300,32 @@ h3 {
   color: var(--color-red);
 }
 
-.bookbind__game {
+.bookbind__game{
+  display: grid;
+  width: 100%;
+}
+
+.bookbind__game canvas{
+  grid-column: 1;
+  grid-row: 1;
+
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  z-index: 10;
+}
+
+.bookbind__width{
+  grid-column: 1;
+  grid-row: 1;
+
+  height: 100%;
+  width: auto;
+  margin: 0 clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+}
+
+.bookbind__background {
+  grid-column: 1;
+  grid-row: 1;
+
   background-color: var(--color-white);
 
   display: flex;
@@ -1296,7 +1334,7 @@ h3 {
 }
 
 .bookbind__list {
-  padding: 2rem clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
+  padding: 3rem clamp(1rem, -0.3699rem + 5.8447vw, 5rem);
   background-color: #C05F59;
 }
 

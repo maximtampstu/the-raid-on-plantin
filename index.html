@@ -231,7 +231,7 @@
       <div class="my-beginning__letter-container">
         <img class="my-beginning__coin-soldier appear" src="./src/image/coin-soldier.png" alt="Coin Soldier">
         <div>
-          <canvas class="my-beginning__letter" id="anim-envelope" height="100" width="300"></canvas>
+          <canvas class="my-beginning__letter" id="anim-envelope" height="100" width="90"></canvas>
           <p> Open the letter <span class="one-line">to continue</span></p>
         </div>
       </div>
@@ -309,17 +309,14 @@
         <div class="appear bookbind__text">
           <h2>Help me bind my first book</h2>
           <p class="bookbind__continue">To Continue</p>
-          <p class="bookbind__help">Make every bind to continue</p>
+          <p class="bookbind__help">Make at least <span class="bookbind__amount">0</span> connections between top and bottom dots.</p>
         </div>
         <div class="bookbind__game">
-          <div class="bookbind__list bookbind__list--top">
-            <ul>
-            </ul>
-          </div>
-          <div class="bookbind__list bookbind__list--bottom">
-            <ul>
-              <li></li>
-            </ul>
+          <canvas class="bookbind__canvas" height="216" width="0"></canvas>
+          <div class="bookbind__width"></div>
+          <div class="bookbind__background">
+            <div class="bookbind__list bookbind__list--top"></div>
+            <div class="bookbind__list bookbind__list--bottom"></div>
           </div>
         </div>
       </section>
