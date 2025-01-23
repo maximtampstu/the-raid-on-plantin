@@ -1,9 +1,18 @@
 import '../css/reset.css';
 import '../css/style.css';
 import { DotLottie } from '@lottiefiles/dotlottie-web';
+//import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
+let pageHeight = document.body.scrollHeight;
+console.log(pageHeight);
+console.log(document.documentElement.scrollHeight)
+console.log(document.documentElement.clientHeight)
+
+document.querySelector(".lock--1").classList.add("visually-hidden");
+//document.querySelector(".lock--2").classList.add("visually-hidden");
 
 const sizeCheck = () => {
   let mq = gsap.matchMedia();
@@ -124,7 +133,7 @@ const barDesktop = (scrolled) => {
 
 const progressBar = () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const height = pageHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
 
   if (window.innerWidth >= 1160) {
@@ -150,6 +159,7 @@ const appearEffect = (itemClass, showPercent, appearOpacity) => {
       scrollTrigger: {
         trigger: item,
         start: `top ${showPercent}%`,
+        //markers: true,
       }
     });
   });
@@ -205,18 +215,10 @@ const envelope = () => {
     }
   });
 
-  console.log(dotLottie);
-
-  dotLottie.addEventListener("frame", () => {
-    console.log("frame");
-  });
-
-  dotLottie.addEventListener("render", () => {
-    console.log("render");
-  });
-
   dotLottie.addEventListener("complete", () => {
-    console.log("done");
+    document.querySelector(".lock--1").classList.remove("visually-hidden");
+    document.querySelector(".my-beginning__letter-container p").innerHTML = "&darr;   Keep on scrolling   &darr;"
+    ScrollTrigger.refresh();
   });
 }
 
@@ -234,11 +236,11 @@ const binding = () => {
   }
 }
 
-const blueprintItemList = ["living", "corner", "childeren", "studio"]
-let blueprintCorrectList = [];
-let blueprintItemSelected = "";
-
 const blueprint = () => {
+  const blueprintItemList = ["living", "corner", "childeren", "studio"]
+  let blueprintCorrectList = [];
+  let blueprintItemSelected = "";
+
   blueprintItemList.forEach(item => {
     document.querySelector(`.blueprint__${item}--item`).addEventListener("click", () => {
       if (!blueprintCorrectList.includes(item)) {

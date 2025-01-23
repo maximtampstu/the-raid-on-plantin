@@ -45,7 +45,6 @@ body {
   box-sizing: inherit;
 }
 
-.mobile-hidden,
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -175,6 +174,7 @@ p {
 .nav__locked p {
   color: var(--color-white);
   opacity: 75%;
+  pointer-events: none;
 }
 
 @media (max-width: 1159px) {
@@ -742,7 +742,7 @@ h3 {
 }
 
 .my-beginning__letter{
-  width: 660px;
+  width: 400px;
 }
 
 .my-beginning__letter-container p {
@@ -2385,7 +2385,7 @@ h3 {
 
 /* CTA */
 
-.cta {
+.cta__container {
   position: relative;
   height: 100dvh;
 
