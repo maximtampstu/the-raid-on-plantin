@@ -10,9 +10,9 @@ let pageHeight = document.body.scrollHeight;
 let lock1 = 0;
 let lock2 = 0;
 
-document.querySelector(".lock--1").classList.add("visually-hidden");
-document.querySelector(".lock--2").classList.add("visually-hidden");
-
+//document.querySelector(".lock--1").classList.add("visually-hidden");
+//document.querySelector(".lock--2").classList.add("visually-hidden");
+/*
 window.addEventListener("resize", () => {
   document.querySelector(".lock--1").classList.remove("visually-hidden");
   document.querySelector(".lock--2").classList.remove("visually-hidden");
@@ -27,10 +27,7 @@ window.addEventListener("resize", () => {
   if(lock2 === 0){
     document.querySelector(".lock--2").classList.add("visually-hidden");
   }
-
-
-
-})
+})*/
 
 /* NAV */
 
@@ -548,6 +545,28 @@ const blueprint = () => {
 
 
 
+/* DAUGHTERS */
+
+const daughters = () => {
+  const panels = gsap.utils.toArray(".daughters__list .daughters__item");
+  const $explore = document.querySelector(".daughters__list");
+
+  const scrollTween = gsap.to(panels, {
+    xPercent: -100 * (panels.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: $explore,
+      pin: $explore,
+      scrub: 0.3,
+      start: "top top",
+      end: () => "+=" + ($explore.scrollWidth - $explore.offsetWidth),
+      markers: true,
+    }
+  });
+}
+
+
+
 /* CORRECTOR */
 
 const startCorrector = () => {
@@ -699,6 +718,7 @@ const init = () => {
   binding();
 
   blueprint(); //DONE
+  //daughters();
   corrector(); //DONE
   cliff(); //DONE
 }
