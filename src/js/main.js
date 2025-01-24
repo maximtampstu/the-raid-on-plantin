@@ -7,11 +7,30 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 gsap.registerPlugin(ScrollTrigger);
 
 let pageHeight = document.body.scrollHeight;
+let lock1 = 0;
+let lock2 = 0;
 
 document.querySelector(".lock--1").classList.add("visually-hidden");
 document.querySelector(".lock--2").classList.add("visually-hidden");
 
+window.addEventListener("resize", () => {
+  document.querySelector(".lock--1").classList.remove("visually-hidden");
+  document.querySelector(".lock--2").classList.remove("visually-hidden");
 
+  ScrollTrigger.refresh();
+
+  pageHeight = document.body.scrollHeight;
+
+  if (lock1 === 0){
+    document.querySelector(".lock--1").classList.add("visually-hidden");
+  }
+  if(lock2 === 0){
+    document.querySelector(".lock--2").classList.add("visually-hidden");
+  }
+
+
+
+})
 
 /* NAV */
 
@@ -116,13 +135,13 @@ $closeButtonPhone.addEventListener("click", closeNavigationPhone);
 listItems.forEach(item => {
   item.addEventListener('click', () => {
     const link = item.querySelector('a');
-    if (link.getAttribute('href') !== '#' && link.getAttribute('href') !== "") {
+    if (link.classList.contains("nav__active")) {
       closeNavigationPhone();
     }
   });
 });
 
-window.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
   if ($navButtonPhone.classList.contains("visually-hidden")) {
     if (!$navList.contains(e.target) && !$navButtonPhone.contains(e.target)) {
       closeNavigationPhone();
@@ -196,6 +215,9 @@ const envelope = () => {
     loop: false,
     canvas: document.querySelector("#anim-envelope"),
     src: "./animation/envelope/envelope.json",
+    renderConfig: {
+      freezeOnOffscreen: false
+    }
   });
 
   document.querySelector(".my-beginning__letter").addEventListener("click", () => {
@@ -206,6 +228,11 @@ const envelope = () => {
     document.querySelector(".lock--1").classList.remove("visually-hidden");
     document.querySelector(".my-beginning__letter-container p").innerHTML = "&darr;   Keep on scrolling   &darr;"
     ScrollTrigger.refresh();
+
+    document.querySelector(".nav__link--normandy").classList.remove("nav__locked")
+    document.querySelector(".nav__link--normandy").classList.add("nav__active")
+    lock1 = 1;
+
     bindingSetup()
   });
 }
@@ -226,8 +253,8 @@ let mouseY = 0;
 let bindingToConnect = Number.POSITIVE_INFINITY;
 let bindsDone = 0;
 
-class BindCircle{
-  constructor(xPos, yPos, position){
+class BindCircle {
+  constructor(xPos, yPos, position) {
     this.xPos = xPos;
     this.yPos = yPos;
     this.position = position
@@ -238,13 +265,13 @@ class BindCircle{
     this.yPosTo = 0;
   }
 
-  display(){
+  display() {
     ctxBinder.beginPath();
     ctxBinder.arc(this.xPos, this.yPos, this.size, 0, 2 * Math.PI);
     ctxBinder.fillStyle = "#232321";
     ctxBinder.fill();
 
-    if(this.selected === 1){
+    if (this.selected === 1) {
       ctxBinder.beginPath();
       ctxBinder.moveTo(this.xPos, this.yPos);
       ctxBinder.lineTo(mouseX, mouseY);
@@ -254,7 +281,7 @@ class BindCircle{
       ctxBinder.stroke();
     }
 
-    if(this.conected === 1){
+    if (this.conected === 1) {
       ctxBinder.beginPath();
       ctxBinder.moveTo(this.xPos, this.yPos);
       ctxBinder.lineTo(this.xPosTo, this.yPosTo);
@@ -263,18 +290,18 @@ class BindCircle{
       ctxBinder.strokeStyle = "#232321";
       ctxBinder.stroke();
     }
-    
+
   }
 }
 
 const bindSetTotal = (circleAmount) => {
-  if(circleAmount > 4){
+  if (circleAmount > 4) {
     bindingToConnect = 5;
   } else {
     bindingToConnect = circleAmount;
   }
-  
-  if (bindingToConnect === 1){
+
+  if (bindingToConnect === 1) {
     document.querySelector(".bookbind__help").innerHTML = `Make <span class="bookbind__amount">0</span> connection between top and bottom dots.`;
   } else {
     document.querySelector(".bookbind__amount").textContent = bindingToConnect;
@@ -284,13 +311,13 @@ const bindSetTotal = (circleAmount) => {
 const bindingSetup = () => {
   let circleAmount = 0;
 
-  if (Math.floor(canvasBinder.width / 100) >= 12){
+  if (Math.floor(canvasBinder.width / 100) >= 12) {
     circleAmount = 12;
   } else {
     circleAmount = Math.floor(canvasBinder.width / 100);
   }
 
-  for (let i = 0; i < circleAmount +1; i++) {
+  for (let i = 0; i < circleAmount + 1; i++) {
     binderTopList.push(new BindCircle(16 + (i * (canvasBinder.width - 32) / circleAmount), 48, "top"))
     binderBottomList.push(new BindCircle(16 + (i * (canvasBinder.width - 32) / circleAmount), canvasBinder.height - 48, "bottom"))
   }
@@ -300,14 +327,14 @@ const bindingSetup = () => {
 
 const bindingDraw = () => {
   ctxBinder.clearRect(0, 0, canvasBinder.width, canvasBinder.height);
-  
+
   binderTopList.forEach(item => {
     item.display()
   });
   binderBottomList.forEach(item => {
     item.display()
   });
-  
+
   requestAnimationFrame(bindingDraw)
 }
 
@@ -317,6 +344,7 @@ const bindingResize = () => {
 
   binderTopList = [];
   binderBottomList = [];
+  bindsDone = 0;
 
   bindingSetup()
 }
@@ -329,30 +357,35 @@ const binding = () => {
 
 const getCanvasCoordinates = (e) => {
   const rect = canvasBinder.getBoundingClientRect();
-  let x, y;
-  
+  let x, y = 0;
+
   if (e.touches) {
-    x = e.touches[0].clientX - rect.left;
-    y = e.touches[0].clientY - rect.top;
+    if (e.touches.length > 0) {
+      x = e.touches[0].clientX - rect.left;
+      y = e.touches[0].clientY - rect.top;
+    } else {
+      x = mouseX;
+      y = mouseY;
+    }
   } else {
     x = e.offsetX;
     y = e.offsetY;
   }
-  
+
   mouseX = x;
   mouseY = y;
-  
+
   return { x, y };
 };
 
 const handleMousedownBinding = (e) => {
   const { x, y } = getCanvasCoordinates(e);
-  
+
   binderTopList.forEach(circle => {
-    if (binderTopList.every(circle => circle.selected === 0)){
-      
+    if (binderTopList.every(circle => circle.selected === 0)) {
+
     }
-    if(circle.conected === 0){
+    if (circle.conected === 0) {
       if (Math.sqrt(Math.pow(circle.xPos - x, 2) + Math.pow(circle.yPos - y, 2)) < circle.size) {
         circle.selected = 1;
       }
@@ -365,15 +398,20 @@ const handleMousedownBinding = (e) => {
       }
     }
   });
-  
+
   e.preventDefault();
+
+  window.addEventListener("mouseup", handleMouseupBinding);
+  window.addEventListener("touchend", handleMouseupBinding);
+  window.addEventListener("mousemove", handleMousemoveBinding);
+  window.addEventListener("touchmove", handleMousemoveBinding);
 }
 
 const bindCheck = (circleFrom, circleTo, e) => {
   const { x, y } = getCanvasCoordinates(e);
-  
+
   if (Math.sqrt(Math.pow(circleTo.xPos - x, 2) + Math.pow(circleTo.yPos - y, 2)) < circleTo.size) {
-    if(circleTo.conected === 0){
+    if (circleTo.conected === 0) {
       circleFrom.conected = 1;
       circleTo.conected = 1;
       circleFrom.xPosTo = circleTo.xPos;
@@ -386,30 +424,39 @@ const bindCheck = (circleFrom, circleTo, e) => {
 }
 
 const bindDoneCheck = () => {
-  if(bindsDone >= bindingToConnect){
+  if (bindsDone >= bindingToConnect) {
     bindingComplete = 1;
-    
+
     document.querySelector(".bookbind__continue").textContent = "Well done";
     document.querySelector(".bookbind__continue").style.textAlign = "center";
     document.querySelector(".bookbind__text h2").innerHTML = "&darr; Continue scrolling &darr;";
     document.querySelector(".bookbind__help").innerHTML = `Or keep connecting <span class="bookbind__amount visually-hidden">0</span>`;
     document.querySelector(".bookbind__help").style.textAlign = "center";
     document.querySelector(".lock--2").classList.remove("visually-hidden");
+
     ScrollTrigger.refresh();
+
+    const navItems = ["my-printing-empire", "daughters", "quick-enhough"]
+    navItems.forEach(item => {
+      document.querySelector(`.nav__link--${item}`).classList.remove("nav__locked")
+      document.querySelector(`.nav__link--${item}`).classList.add("nav__active")
+    });
+
+    lock2 = 1;
   }
 }
 
 const handleMouseupBinding = (e) => {
-  
+
   binderTopList.forEach(circle => {
-    if(circle.selected === 1){
+    if (circle.selected === 1) {
       binderBottomList.forEach(circle2 => {
         bindCheck(circle, circle2, e);
       });
     }
     circle.selected = 0;
   });
-  
+
   binderBottomList.forEach(circle => {
     if (circle.selected === 1) {
       binderTopList.forEach(circle2 => {
@@ -418,10 +465,15 @@ const handleMouseupBinding = (e) => {
     }
     circle.selected = 0;
   });
-  
-  if(bindingComplete === 0){
+
+  if (bindingComplete === 0) {
     bindDoneCheck()
   }
+
+  window.removeEventListener("mouseup", handleMouseupBinding);
+  window.removeEventListener("touchend", handleMouseupBinding);
+  window.removeEventListener("mousemove", handleMousemoveBinding);
+  window.removeEventListener("touchmove", handleMousemoveBinding);
 }
 
 const handleMousemoveBinding = (e) => {
@@ -429,11 +481,7 @@ const handleMousemoveBinding = (e) => {
 }
 
 canvasBinder.addEventListener("mousedown", handleMousedownBinding);
-canvasBinder.addEventListener("mouseup", handleMouseupBinding);
-canvasBinder.addEventListener("touchstart", handleMousedownBinding);
-canvasBinder.addEventListener("touchend", handleMouseupBinding);
-canvasBinder.addEventListener("mousemove", handleMousemoveBinding);
-canvasBinder.addEventListener("touchmove", handleMousemoveBinding);
+canvasBinder.addEventListener("touchstart", handleMousedownBinding)
 window.addEventListener('resize', bindingResize);
 
 
@@ -637,7 +685,7 @@ const observer = new MutationObserver(() => {
 
     binderTopList = [];
     binderBottomList = [];
-    binding(); 
+    binding();
   }
 });
 
@@ -647,7 +695,7 @@ const init = () => {
   appear(); //DONE
   envelope();
 
-  observer.observe($firstLock, { attributes: true, attributeFilter: ["class"] }); 
+  observer.observe($firstLock, { attributes: true, attributeFilter: ["class"] });
   binding();
 
   blueprint(); //DONE

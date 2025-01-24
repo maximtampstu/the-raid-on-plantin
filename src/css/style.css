@@ -163,16 +163,24 @@ p {
   color: var(--color-white);
 }
 
+.nav__active .nav__lock-locked{
+  fill-opacity: 0;
+}
+
 .nav__active:hover p {
   color: var(--color-red);
 }
 
-.nav__active:hover .header__active-svg {
+.nav__active:hover .nav__lock-open {
   fill: var(--color-red);
 }
 
 .nav__locked{
   pointer-events: none;
+}
+
+.nav__locked .nav__lock-open {
+  fill-opacity: 0;
 }
 
 .nav__locked p {
@@ -745,6 +753,8 @@ h3 {
 
   max-width: 41.25rem;
   max-height: max-content;
+
+  z-index: 29;
 }
 
 .my-beginning__letter{
