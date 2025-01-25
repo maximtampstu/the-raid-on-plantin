@@ -107,7 +107,7 @@ const progressBar = () => {
 
 const toggleNavigationDesktop = () => {
   if ($header.style.top === "0px") {
-    $header.style.top = "-65px";
+    $header.style.top = "-66px";
     $logo.style.opacity = 0;
     $arrowUp.setAttribute('opacity', 0);
     $arrowDown.setAttribute('opacity', 1);

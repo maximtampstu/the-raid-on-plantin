@@ -25,6 +25,10 @@ img {
   height: auto;
 }
 
+.picture__grid{
+  display: contents;
+}
+
 a {
   text-decoration: none;
 }
@@ -605,6 +609,7 @@ p {
 
     height: 100dvh;
     width: auto;
+    max-width: 15.5625rem;
 
     margin-right: -6rem;
   }
@@ -810,7 +815,7 @@ h2 {
 }
 
 .my-beginning__plate {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .my-beginning__plate img {
@@ -1061,6 +1066,7 @@ h3 {
 
     height: 100%;
     width: auto;
+    max-width: 20.8125rem;
 
     justify-self: end;
     margin-right: -3rem;
@@ -1306,7 +1312,6 @@ h3 {
   height: auto;
 
   margin-left: -65%;
-
 }
 
 .normandy__head-story-container {

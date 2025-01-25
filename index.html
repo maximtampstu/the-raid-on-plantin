@@ -25,7 +25,11 @@
       </svg>
     </button>
     <div class="header__container">
-      <img class="header__logo" src="./src/image/mpm-logo.png" alt="Logo">
+      <picture>
+        <source srcset="./src/image/mpm-logo.avif" type="image/avif">
+        <source srcset="./src/image/mpm-logo.webp" type="image/webp">
+        <img class="header__logo" src="./src/image/mpm-logo.png" alt="Logo">
+      </picture>
       <div class="header__links">
         <nav class="nav">
           <ul class="nav__list">
@@ -139,9 +143,17 @@
     <section class="hero">
       <h2 class="visually-hidden">Hero Image</h2>
       <div class="hero__plate">
-        <img src="./src/image/plate-hero.png" alt="Plate Hero">
+        <picture>
+          <source srcset="./src/image/plate-hero.avif" type="image/avif">
+          <source srcset="./src/image/plate-hero.webp" type="image/webp">
+          <img src="./src/image/plate-hero.png" alt="Plate Hero">
+        </picture>
       </div>
-      <img class="hero__flies" src="./src/image/flies.png" alt="Flies">
+      <picture class="picture__grid">
+        <source srcset="./src/image/flies.avif" type="image/avif">
+        <source srcset="./src/image/flies.webp" type="image/webp">
+        <img class="hero__flies" src="./src/image/flies.png" alt="Flies">
+      </picture>
       <svg class="hero__title" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583.63 227.98">
         <defs>
           <style>
@@ -181,12 +193,36 @@
             stroke-opacity="0.9" stroke-width="5" />
         </svg>
       </a>
-      <img class="hero__date" src="./src/image/date-1520.png" alt="Date 1520">
-      <img class="hero__city" src="./src/image/city.png" alt="City">
-      <img class="hero__crossbow" src="./src/image/crossbow.png" alt="Crossbow">
-      <img class="hero__plantin" src="./src/image/plantin.png" alt="Plantin">
-      <img class="hero__character-i" src="./src/image/character-i.png" alt="I">
-      <img class="hero__pillar" src="./src/image/pillar-hero.png" alt="Pillar">
+      <picture class="picture__grid">
+        <source srcset="./src/image/date-1520.avif" type="image/avif">
+        <source srcset="./src/image/date-1520.webp" type="image/webp">
+        <img class="hero__date" src="./src/image/date-1520.png" alt="Date 1520">
+      </picture>
+      <picture class="picture__grid">
+        <source srcset="./src/image/city.avif" type="image/avif">
+        <source srcset="./src/image/city.webp" type="image/webp">
+        <img class="hero__city" src="./src/image/city.png" alt="City">
+      </picture>
+      <picture class="picture__grid">
+        <source srcset="./src/image/crossbow.avif" type="image/avif">
+        <source srcset="./src/image/crossbow.webp" type="image/webp">
+        <img class="hero__crossbow" src="./src/image/crossbow.png" alt="Crossbow">
+      </picture>
+      <picture class="picture__grid">
+        <source srcset="./src/image/plantin.avif" type="image/avif">
+        <source srcset="./src/image/plantin.webp" type="image/webp">
+        <img class="hero__plantin" src="./src/image/plantin.png" alt="Plantin">
+      </picture>
+      <picture class="picture__grid">
+        <source srcset="./src/image/character-i.avif" type="image/avif">
+        <source srcset="./src/image/character-i.webp" type="image/webp">
+        <img class="hero__character-i" src="./src/image/character-i.png" alt="I">
+      </picture>
+      <picture class="picture__grid">
+        <source srcset="./src/image/pillar-hero.avif" type="image/avif">
+        <source srcset="./src/image/pillar-hero.webp" type="image/webp">
+        <img class="hero__pillar" src="./src/image/pillar-hero.png" alt="Pillar">
+      </picture>
     </section>
     <section id="my-beginning" class="my-beginning">
       <div class="head-story appear">
@@ -227,7 +263,13 @@
         </div>
       </div>
       <div class="my-beginning__plate appear">
-        <img src="./src/image/plate-my-beginning.png" alt="Plate">
+        <picture>
+          <source srcset="./src/image/plate-my-beginning-1609.avif 1609w,
+                          ./src/image/plate-my-beginning-2160.avif 2160w" type="image/avif">
+          <source srcset="./src/image/plate-my-beginning-1609.webp 1609w,
+                          ./src/image/plate-my-beginning-2160.webp 2160w" type="image/webp">
+          <img src="./src/image/plate-my-beginning.png" alt="Plate">
+        </picture>
       </div>
       <img class="my-beginning__pillar appear" src="./src/image/pillar-my-beginning.png" alt="Pillar">
       <div class="mother-letter-container appear">
