@@ -9,13 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 let pageHeight = document.body.scrollHeight;
 let lock1 = 0;
 let lock2 = 0;
+document.querySelector(".lock--1").classList.add("visually-hidden");
+document.querySelector(".lock--2").classList.add("visually-hidden");
+document.querySelector(".lock--3").classList.add("visually-hidden");
 
-//document.querySelector(".lock--1").classList.add("visually-hidden");
-//document.querySelector(".lock--2").classList.add("visually-hidden");
-/*
+
 window.addEventListener("resize", () => {
   document.querySelector(".lock--1").classList.remove("visually-hidden");
   document.querySelector(".lock--2").classList.remove("visually-hidden");
+  document.querySelector(".lock--3").classList.remove("visually-hidden");
+
 
   ScrollTrigger.refresh();
 
@@ -26,8 +29,9 @@ window.addEventListener("resize", () => {
   }
   if(lock2 === 0){
     document.querySelector(".lock--2").classList.add("visually-hidden");
+    document.querySelector(".lock--3").classList.add("visually-hidden");
   }
-})*/
+})
 
 /* NAV */
 
@@ -430,6 +434,7 @@ const bindDoneCheck = () => {
     document.querySelector(".bookbind__help").innerHTML = `Or keep connecting <span class="bookbind__amount visually-hidden">0</span>`;
     document.querySelector(".bookbind__help").style.textAlign = "center";
     document.querySelector(".lock--2").classList.remove("visually-hidden");
+    document.querySelector(".lock--3").classList.remove("visually-hidden");
 
     ScrollTrigger.refresh();
 
