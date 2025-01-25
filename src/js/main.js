@@ -668,7 +668,6 @@ const cliffMask = (maskClass, maskSize, maskContainer, maskStart, maskEnd) => {
       start: `top ${maskStart}`,
       end: `bottom ${maskEnd}`,
       scrub: true,
-      //markers: true,
     },
   });
 }
@@ -701,10 +700,8 @@ const cliff = () => {
     scrollTrigger: {
       trigger: ".cta",
       scrub: true,
-      //pin: ".cta__text",
       start: "top 75%",
       end: "top 25%",
-      //markers: true,
     },
   });
 }
@@ -729,7 +726,7 @@ const observer = new MutationObserver(() => {
 
 const init = () => {
   nav(); //DONE
-  letterMother();
+  letterMother(); //DONE
   appear(); //DONE
   envelope(); //DONE
 

@@ -1497,7 +1497,7 @@ h3 {
 
   position: relative;
   place-self: start;
-  width: max-content;
+  width: fit-content;
 }
 
 .bookbind h2 {
@@ -2551,11 +2551,17 @@ h3 {
   grid-template-rows: repeat(3, auto);
 }
 
-.quick-enough .head-story {
+.quick-enhough__head-story-continer {
   grid-column: 1 / span 2;
   grid-row: 3;
 
+  margin: 0 clamp(1rem, -6.7419rem + 33.0323vw, 17rem);
   margin-top: 7rem;
+  margin-bottom: clamp(0rem, -2.1429rem + 9.1429vw, 3rem);
+}
+
+.quick-enhough__head-story-continer .head-story{
+  margin: 0;
 }
 
 .quick-enough__plate {
@@ -2566,7 +2572,7 @@ h3 {
 }
 
 .quick-enough__plate img {
-  width: 75rem;
+  width: 80rem;
   margin-left: -3rem;
 }
 
@@ -2585,6 +2591,9 @@ h3 {
   grid-row: 2;
 
   margin-top: -2rem;
+  margin-left: auto;
+  margin-right: clamp(-3rem, 1.4516rem + -6.1935vw, 0rem);
+  width: clamp(6.5625rem, 0.0893rem + 27.619vw, 15.625rem);
 
   display: grid;
 }
@@ -2614,9 +2623,60 @@ h3 {
   text-align: center;
 }
 
+@media (max-width: 1149px) {
+  .quick-enough__visual{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+@media (min-width: 1150px){
+  .quick-enough__plate img {
+    width: 111rem;
+    margin-left: -4rem;
+  }
+
+  .quick-enhough__head-story-continer{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+
+    margin: 0 5rem;
+    margin-top: 7rem;
+    margin-bottom: clamp(0rem, -2.1429rem + 9.1429vw, 3rem);
+  }
+
+  .quick-enhough__head-story-continer .head-story{
+    width: clamp(30rem, -16.7187rem + 65vw, 43rem);
+  }
+
+  .quick-enough__visual{
+    width: clamp(20rem, 2.0313rem + 25vw, 25rem);
+  }
+
+  .quick-enough__knock {
+    margin-top: -2rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .quick-enough__plate img {
+    width: clamp(111rem, 16rem + 95vw, 130rem);
+    margin-left: clamp(-5rem, 1rem + -5vw, -4rem);
+  }
+}
 
 
 
+/* CLIFF */
 
 .cliff {
   margin-top: 12rem;
