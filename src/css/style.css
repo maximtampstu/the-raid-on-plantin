@@ -2966,17 +2966,6 @@ h3 {
   width: 75%;
 }
 
-.next-stories__pillar {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
 @media (max-width: 719px) {
   .story__visual {
     position: absolute;
@@ -3009,6 +2998,7 @@ h3 {
 
   .next-stories h2{
     width: max-content;
+    margin-top: 6rem;
   }
 
   .story-list{
@@ -3019,15 +3009,19 @@ h3 {
     margin-top: 5rem;
   }
 
+  body{
+    overflow-x: hidden;
+  }
+
   .story-list li{
     box-sizing: border-box;
-    display: block;
   }
 
   .story__visual{
     display: grid;
 
     height: 16.875rem;
+    aspect-ratio: 240/272;
   }
 
   .story__visual img, .story__visual div{
@@ -3056,10 +3050,57 @@ h3 {
 
   .story__text{
     aspect-ratio: 7/3;
+    width: 238px;
   }
 
   .story__text p{
     font-size: clamp(1.25rem, 1.01rem + 0.5333vw, 1.5rem);
+  }
+}
+
+@media (max-width: 1279px) {
+  .next-stories__pillar {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+@media (min-width: 1280px){
+  .next-stories{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+
+  .next-stories h2{
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .story-list{
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .chilling-woman{
+    grid-column: 2;
+    grid-row: 3;
+
+    height: auto;
+  }
+
+  .next-stories__pillar{
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    max-width: 9rem;
+
+    margin-right: 2rem;
+    margin-left: clamp(-2rem, -14rem + 15vw, 4rem);
   }
 }
 
