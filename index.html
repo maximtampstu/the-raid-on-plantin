@@ -228,7 +228,11 @@
       <div class="head-story appear">
         <div class="head-story__heading">
           <h2>My Beginning</h2>
-          <img class="my-beginning__1528" src="./src/image/date-1528.png" alt="Date 1528">
+          <picture>
+            <source srcset="./src/image/date-1528.avif" type="image/avif">
+            <source srcset="./src/image/date-1528.webp" type="image/webp">
+            <img class="my-beginning__1528" src="./src/image/date-1528.png" alt="Date 1528">
+          </picture>
         </div>
         <div class="head-story__text">
           <p>I wake up, my father Jean Plantin is already up and in the kitchen, he tells me that I got <span
@@ -256,7 +260,11 @@
                 </svg>
               </button>
               <div class="letter-mother__image-container">
-                <img src="./src/image/letter-mother-phone.png" alt="Letter mothers death">
+                <picture class="picture__grid">
+                  <source srcset="./src/image/letter-mother-phone.avif" type="image/avif">
+                  <source srcset="./src/image/letter-mother-phone.webp" type="image/webp">
+                  <img src="./src/image/letter-mother-phone.png" alt="Letter mothers death">
+                </picture>
               </div>
             </div>
           </div>
@@ -265,25 +273,75 @@
       <div class="my-beginning__plate appear">
         <picture>
           <source srcset="./src/image/plate-my-beginning-1609.avif 1609w,
-                          ./src/image/plate-my-beginning-2160.avif 2160w" type="image/avif">
+                          ./src/image/plate-my-beginning-2160.avif 2160w" sizes="(min-width: 1240px) 110vw, (min-width: 800px) 150vw, 200vw" type="image/avif">
           <source srcset="./src/image/plate-my-beginning-1609.webp 1609w,
-                          ./src/image/plate-my-beginning-2160.webp 2160w" type="image/webp">
+                          ./src/image/plate-my-beginning-2160.webp 2160w" sizes="(min-width: 1240px) 110vw, (min-width: 800px) 150vw, 200vw" type="image/webp">
           <img src="./src/image/plate-my-beginning.png" alt="Plate">
         </picture>
       </div>
-      <img class="my-beginning__pillar appear" src="./src/image/pillar-my-beginning.png" alt="Pillar">
+      <picture class="picture__grid">
+        <source srcset="./src/image/pillar-my-beginning-3.avif 3w,
+                        ./src/image/pillar-my-beginning-333.avif 333w,
+                        ./src/image/pillar-my-beginning-470.avif 470w,
+                        ./src/image/pillar-my-beginning-580.avif 580w,
+                        ./src/image/pillar-my-beginning-666.avif 666w,
+                        ./src/image/pillar-my-beginning-750.avif 750w,
+                        ./src/image/pillar-my-beginning-820.avif 820w,
+                        ./src/image/pillar-my-beginning-880.avif 880w,
+                        ./src/image/pillar-my-beginning-940.avif 940w,
+                        ./src/image/pillar-my-beginning-999.avif 999w" type="image/avif">
+        <source srcset="./src/image/pillar-my-beginning-3.webp 3w,
+                        ./src/image/pillar-my-beginning-333.webp 333w,
+                        ./src/image/pillar-my-beginning-470.webp 470w,
+                        ./src/image/pillar-my-beginning-580.webp 580w,
+                        ./src/image/pillar-my-beginning-666.webp 666w,
+                        ./src/image/pillar-my-beginning-750.webp 750w,
+                        ./src/image/pillar-my-beginning-820.webp 820w,
+                        ./src/image/pillar-my-beginning-880.webp 880w,
+                        ./src/image/pillar-my-beginning-940.webp 940w,
+                        ./src/image/pillar-my-beginning-999.webp 999w" type="image/webp">
+        <img class="my-beginning__pillar appear" src="./src/image/pillar-my-beginning.png" alt="Pillar">
+      </picture>
       <div class="mother-letter-container appear">
-        <img class="my-beginning__open-letter" src="./src/image/letter-mother.png" alt="Letter death mother">
-        <img class="my-beginning__coin-man" src="./src/image/coin-man.png" alt="Coin Men">
+        <picture>
+          <source srcset="./src/image/letter-mother.avif" type="image/avif">
+          <source srcset="./src/image/letter-mother.webp" type="image/webp">
+          <img class="my-beginning__open-letter" src="./src/image/letter-mother.png" alt="Letter death mother">
+        </picture>
+        <picture>
+          <source srcset="./src/image/coin-man.avif" type="image/avif">
+          <source srcset="./src/image/coin-man.webp" type="image/webp">
+          <img class="my-beginning__coin-man" src="./src/image/coin-man.png" alt="Coin Men">
+        </picture>
       </div>
       <div class="my-beginning__death-visuals">
         <div class="my-beginning__grave">
-          <img class="appear" src="./src/image/grave.png" alt="Grave">
-          <img class="appear-late" src="./src/image/grave-extra.png" alt="Grave extra">
+          <picture class="picture__grid">
+            <source srcset="./src/image/grave.avif" type="image/avif">
+            <source srcset="./src/image/grave.webp" type="image/webp">
+            <img class="appear" src="./src/image/grave.png" alt="Grave">
+          </picture>
+          <picture class="picture__grid">
+            <source srcset="./src/image/grave-extra.avif" type="image/avif">
+            <source srcset="./src/image/grave-extra.webp" type="image/webp">
+            <img class="appear-late" src="./src/image/grave-extra.png" alt="Grave extra">
+          </picture>
         </div>
-        <img class="my-beginning__leafes appear" src="./src/image/leafes.png" alt="leafes">
-        <img class="my-beginning__coin-grave appear" src="./src/image/coin-grave.png" alt="Coin Grave">
-        <img class="my-beginning__character-l appear" src="./src/image/character-l.png" alt="Character L">
+        <picture class="picture__grid">
+          <source srcset="./src/image/leafes.avif" type="image/avif">
+          <source srcset="./src/image/leafes.webp" type="image/webp">
+          <img class="my-beginning__leafes appear" src="./src/image/leafes.png" alt="leafes">
+        </picture>
+        <picture class="picture__grid">
+          <source srcset="./src/image/coin-grave.avif" type="image/avif">
+          <source srcset="./src/image/coin-grave.webp" type="image/webp">
+          <img class="my-beginning__coin-grave appear" src="./src/image/coin-grave.png" alt="Coin Grave">
+        </picture>
+        <picture class="picture__grid">
+          <source srcset="./src/image/character-l.avif" type="image/avif">
+          <source srcset="./src/image/character-l.webp" type="image/webp">
+          <img class="my-beginning__character-l appear" src="./src/image/character-l.png" alt="Character L">
+        </picture>
       </div>
       <p class="my-beginning__6-years-later appear">6 years later</p>
       <article class="sub-story appear">
@@ -304,16 +362,32 @@
         </div>
       </article>
       <div class="my-beginning__letter-container">
-        <img class="my-beginning__coin-soldier appear" src="./src/image/coin-soldier.png" alt="Coin Soldier">
+        <picture class="picture__grid">
+          <source srcset="./src/image/coin-soldier.avif" type="image/avif">
+          <source srcset="./src/image/coin-soldier.webp" type="image/webp">
+          <img class="my-beginning__coin-soldier appear" src="./src/image/coin-soldier.png" alt="Coin Soldier">
+        </picture>
         <div>
           <canvas class="my-beginning__letter" id="anim-envelope" height="100" width="90"></canvas>
           <p> Open the letter <span class="one-line">to continue</span></p>
         </div>
       </div>
       <div class="my-beginning__flowers appear">
-        <img class="my-beginning__dancy-flower" src="./src/image/dancy-flower.png" alt="Dancy flower">
-        <img class="my-beginning__corn-flower" src="./src/image/corn-flower.png" alt="Corn flower">
-        <img class="my-beginning__character-y" src="./src/image/character-y.png" alt="Character Y">
+        <picture class="picture__grid">
+          <source srcset="./src/image/dancy-flower.avif" type="image/avif">
+          <source srcset="./src/image/dancy-flower.webp" type="image/webp">
+          <img class="my-beginning__dancy-flower" src="./src/image/dancy-flower.png" alt="Dancy flower">
+        </picture>
+        <picture class="picture__grid">
+          <source srcset="./src/image/corn-flower.avif" type="image/avif">
+          <source srcset="./src/image/corn-flower.webp" type="image/webp">
+          <img class="my-beginning__corn-flower" src="./src/image/corn-flower.png" alt="Corn flower">
+        </picture>
+        <picture class="picture__grid">
+          <source srcset="./src/image/character-y.avif" type="image/avif">
+          <source srcset="./src/image/character-y.webp" type="image/webp">
+          <img class="my-beginning__character-y" src="./src/image/character-y.png" alt="Character Y">
+        </picture>
       </div>
     </section>
     <div class="lock--1">

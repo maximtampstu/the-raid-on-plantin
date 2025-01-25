@@ -1048,6 +1048,7 @@ h3 {
     margin-left: 6rem;
 
     justify-self: end;
+    grid-row: 5;
   }
 
   .my-beginning__plate {
@@ -1062,7 +1063,7 @@ h3 {
 
   .my-beginning__pillar {
     grid-column: 1;
-    grid-row: 1 / span 6;
+    grid-row: 1 / span 8;
 
     height: 100%;
     width: auto;
@@ -1091,9 +1092,15 @@ h3 {
     margin-left: -7rem;
   }
 
+  .my-beginning__letter-container {
+    grid-column: 2;
+    grid-row: 6;
+  }
+
   .my-beginning__letter-container div {
     margin-left: 6rem;
     justify-self: center;
+    grid-column: 2;
   }
 
 }
@@ -1270,6 +1277,7 @@ h3 {
   .my-beginning__flowers {
     grid-column: 3;
     grid-row: 5;
+    place-self: end;
   }
 }
 
