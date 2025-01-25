@@ -10,10 +10,10 @@ let pageHeight = document.body.scrollHeight;
 
 let lock1 = 0;
 let lock2 = 0;
+
 document.querySelector(".lock--1").classList.add("visually-hidden");
 document.querySelector(".lock--2").classList.add("visually-hidden");
 document.querySelector(".lock--3").classList.add("visually-hidden");
-
 
 window.addEventListener("resize", () => {
   document.querySelector(".lock--1").classList.remove("visually-hidden");

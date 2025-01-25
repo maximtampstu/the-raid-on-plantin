@@ -821,7 +821,7 @@ h2 {
 .my-beginning__plate img {
   width: 200%;
   margin-left: -50%;
-
+  max-width: 176.25rem;
   z-index: 3;
   position: relative;
 }
@@ -1313,6 +1313,7 @@ h3 {
 
   display: flex;
   align-items: end;
+  z-index: -1;
 }
 
 .normandy__normandy img {
