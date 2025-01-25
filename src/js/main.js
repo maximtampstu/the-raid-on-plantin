@@ -564,28 +564,6 @@ const blueprint = () => {
 
 
 
-/* DAUGHTERS */
-
-const daughters = () => {
-  const panels = gsap.utils.toArray(".daughters__list .daughters__item");
-  const $explore = document.querySelector(".daughters__list");
-
-  const scrollTween = gsap.to(panels, {
-    xPercent: -100 * (panels.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: $explore,
-      pin: $explore,
-      scrub: 0.3,
-      start: "top top",
-      end: () => "+=" + ($explore.scrollWidth - $explore.offsetWidth),
-      markers: true,
-    }
-  });
-}
-
-
-
 /* CORRECTOR */
 
 const startCorrector = () => {
@@ -725,18 +703,17 @@ const observer = new MutationObserver(() => {
 });
 
 const init = () => {
-  nav(); //DONE
-  letterMother(); //DONE
-  appear(); //DONE
-  envelope(); //DONE
+  nav();
+  letterMother();
+  appear(); 
+  envelope();
 
   observer.observe($firstLock, { attributes: true, attributeFilter: ["class"] });
-  binding(); //DONE
+  binding();
 
-  blueprint(); //DONE
-  //daughters();
-  corrector(); //DONE
-  cliff(); //DONE
+  blueprint();
+  corrector();
+  cliff();
 }
 
 init();
