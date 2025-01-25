@@ -611,6 +611,37 @@ p {
 
 }
 
+@media (min-width: 1470px){
+  .hero__date{
+    margin-right: clamp(-2rem, -21.6rem + 21.3333vw, 4rem);
+  }
+
+  .hero__crossbow{
+    margin-left: clamp(10rem, -22.6667rem + 35.5556vw, 20rem);
+  }
+
+  .hero__pillar{
+    margin-right: clamp(-7rem, -2.7333rem + -3.5556vw, -6rem);
+  }
+
+  .hero__plantin{
+    margin-right: clamp(-2rem, -8.5333rem + 7.1111vw, 0rem);
+  }
+}
+
+@media (min-width: 1700px){
+  .hero__plate {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
 
 
 /* By Beginning */
@@ -637,6 +668,7 @@ p {
 
 .my-beginning .head-story {
   margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 .head-story__heading {
@@ -730,23 +762,39 @@ h2 {
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-visuals{
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+
+  height: min-content;
 }
 
-.letter-container img {
+.letter-mother__image-container{
   grid-row: 1;
   grid-column: 1;
 
-  width: 21.5rem;
-  place-self: center;
+  margin: 0 1rem;
+  height: min-content;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.letter-container button {
+.letter-mother__image-container img {
+  max-width: 30.5rem;
+}
+
+.letter-visuals button {
   grid-row: 1;
   grid-column: 1;
-  place-self: center;
+  place-self: start;
 
   border: none;
   background-color: var(--color-black);
@@ -754,8 +802,9 @@ h2 {
   padding-right: 0.4rem;
   padding-bottom: 0.3rem;
 
-  margin-left: 15rem;
-  margin-bottom: 23rem;
+  margin-left: auto;
+  margin-right: clamp(3rem, 0.4138rem + 11.0345vw, 4rem);
+  margin-top: clamp(2.5rem, -0.0862rem + 11.0345vw, 3.5rem);
 
   z-index: 2;
 }
@@ -781,6 +830,7 @@ h2 {
   grid-template-rows: repeat(3, auto);
 
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .my-beginning__grave {
@@ -808,9 +858,6 @@ h2 {
 
   margin-top: -3rem;
 }
-
-
-
 
 .my-beginning__coin-grave {
   grid-column: 1;
@@ -1220,6 +1267,16 @@ h3 {
   }
 }
 
+@media (min-width: 1470px) {
+  .my-beginning .head-story{
+    margin-left: clamp(6rem, -20.1333rem + 28.4444vw, 14rem);
+  }
+
+  .my-beginning .sub-story{
+    margin-right: clamp(5rem, -24.4rem + 32vw, 14rem);
+  }
+}
+
 
 
 /* NORMANDY */
@@ -1439,7 +1496,8 @@ h3 {
   grid-column: 1fr;
 
   position: relative;
-  justify-self: start;
+  place-self: start;
+  width: max-content;
 }
 
 .bookbind h2 {
@@ -1596,6 +1654,12 @@ h3 {
   }
 }
 
+@media (min-width: 1470px){
+  .bookbind__text{
+    margin-right: 0;
+    margin-left: clamp(5rem, -27.6667rem + 35.5556vw, 15rem);
+  }
+}
 
 
 /* MY PRINTING EMPIRE */

@@ -7,6 +7,7 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 gsap.registerPlugin(ScrollTrigger);
 
 let pageHeight = document.body.scrollHeight;
+
 let lock1 = 0;
 let lock2 = 0;
 document.querySelector(".lock--1").classList.add("visually-hidden");
@@ -46,11 +47,13 @@ const $closeButtonPhone = document.querySelector('.nav__item--my-beginning butto
 const $logo = document.querySelector(".header__logo");
 const $arrowUp = document.querySelector('.desktop-button__arrow--up');
 const $arrowDown = document.querySelector('.desktop-button__arrow--down');
+let navPhoneOpen = 0;
 
 const navPhone = () => {
   $navButtonPhone.classList.remove('visually-hidden');
   $navContainer.classList.add("visually-hidden");
   $header.style.top = "0px";
+  navPhoneOpen = 0;
 }
 
 const navDesktop = () => {
@@ -120,12 +123,14 @@ const openNavigationPhone = () => {
   $navContainer.classList.remove("visually-hidden");
   $navButtonPhone.classList.add('visually-hidden');
   $body.classList.add('no-scroll');
+  navPhoneOpen = 1;
 }
 
 const closeNavigationPhone = () => {
   $navContainer.classList.add("visually-hidden");
   $navButtonPhone.classList.remove('visually-hidden');
   $body.classList.remove('no-scroll');
+  navPhoneOpen = 0;
 }
 
 document.addEventListener("scroll", progressBar);
@@ -143,7 +148,7 @@ listItems.forEach(item => {
 });
 
 document.addEventListener('click', (e) => {
-  if ($navButtonPhone.classList.contains("visually-hidden")) {
+  if (navPhoneOpen === 1) {
     if (!$navList.contains(e.target) && !$navButtonPhone.contains(e.target)) {
       closeNavigationPhone();
     }
@@ -180,31 +185,41 @@ const appear = () => {
 
 /* LETTER MOTHER */
 
+const $letterButton = document.querySelector('.letter-button');
+const $letter = document.querySelector('.letter-container');
+const $closeButtonLetter = document.querySelector('.letter-container button');
+let letterOpen = 0;
+
 const letterMother = () => {
-
-  const $letterButton = document.querySelector('.letter-button');
-  const $letter = document.querySelector('.letter-container');
-  const $closeButton = document.querySelector('.letter-container button')
-
-  const $navButton = document.querySelector('.phone-button');
-
   $letterButton.classList.remove('visually-hidden');
   $letter.classList.add("visually-hidden");
-
-  const openNavigation = () => {
-    $letter.classList.remove("visually-hidden");
-    $navButton.classList.add('visually-hidden');
-  }
-
-  const closeNavigation = () => {
-    $letter.classList.add("visually-hidden");
-    $navButton.classList.remove('visually-hidden');
-  }
-
-  $letterButton.addEventListener("click", openNavigation);
-  $closeButton.addEventListener("click", closeNavigation);
-
+  letterOpen = 0;
 }
+
+const openLetter = () => {
+  $letter.classList.remove("visually-hidden");
+  $navButtonPhone.classList.add('visually-hidden');
+  $body.classList.add('no-scroll');
+  letterOpen = 1;
+}
+
+const closeLetter = () => {
+  $letter.classList.add("visually-hidden");
+  $navButtonPhone.classList.remove('visually-hidden');
+  $body.classList.remove('no-scroll');
+  letterOpen = 0;
+}
+
+$letterButton.addEventListener("click", openLetter);
+$closeButtonLetter.addEventListener("click", closeLetter);
+
+document.addEventListener('click', (e) => {
+  if (letterOpen === 1) {
+    if (!document.querySelector('.letter-container img').contains(e.target) && !$letterButton.contains(e.target)) {
+      closeLetter()
+    }
+  }
+});
 
 
 
@@ -349,7 +364,6 @@ const bindingResize = () => {
 
   bindingSetup()
 }
-
 
 const binding = () => {
   bindingSetup()
@@ -717,10 +731,10 @@ const init = () => {
   nav(); //DONE
   letterMother();
   appear(); //DONE
-  envelope();
+  envelope(); //DONE
 
   observer.observe($firstLock, { attributes: true, attributeFilter: ["class"] });
-  binding();
+  binding(); //DONE
 
   blueprint(); //DONE
   //daughters();
