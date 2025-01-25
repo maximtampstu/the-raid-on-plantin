@@ -7,7 +7,7 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 gsap.registerPlugin(ScrollTrigger);
 
 let pageHeight = document.body.scrollHeight;
-
+/*
 let lock1 = 0;
 let lock2 = 0;
 
@@ -32,7 +32,7 @@ window.addEventListener("resize", () => {
     document.querySelector(".lock--2").classList.add("visually-hidden");
     document.querySelector(".lock--3").classList.add("visually-hidden");
   }
-})
+})*/
 
 /* NAV */
 

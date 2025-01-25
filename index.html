@@ -535,7 +535,11 @@
             </div>
           </div>
           <div class="my-printing-empire__bookshelf appear">
-            <img src="./src/image/bookshelf.png" alt="Bookplank">
+            <picture class="picture__grid">
+              <source srcset="./src/image/bookshelf.avif" type="image/avif">
+              <source srcset="./src/image/bookshelf.webp" type="image/webp">
+              <img src="./src/image/bookshelf.png" alt="Bookplank">
+            </picture>
           </div>
           <article class="problems">
             <div class="problems__first-text appear">
@@ -556,10 +560,22 @@
             </div>
             <div class="my-printing-empire__booklist-container">
               <div class="my-printing-empire__booklist">
-                <img class="appear" src="./src/image/normal-list.png" alt="Book list">
-                <img class="appear-late" src="./src/image/forbidden-list.png" alt="Forbitten book list">
+                <picture class="picture__grid">
+                  <source srcset="./src/image/normal-list.avif" type="image/avif">
+                  <source srcset="./src/image/normal-list.webp" type="image/webp">
+                  <img class="appear" src="./src/image/normal-list.png" alt="Book list">
+                </picture>
+                <picture class="picture__grid">
+                  <source srcset="./src/image/forbidden-list.avif" type="image/avif">
+                  <source srcset="./src/image/forbidden-list.webp" type="image/webp">
+                  <img class="appear-late" src="./src/image/forbidden-list.png" alt="Forbitten book list">
+                </picture>
               </div>
-              <img class="my-printing-empire__book appear" src="./src/image/book.png" alt="Book">
+              <picture class="picture__grid">
+                <source srcset="./src/image/book.avif" type="image/avif">
+                <source srcset="./src/image/book.webp" type="image/webp">
+                <img class="my-printing-empire__book appear" src="./src/image/book.png" alt="Book">
+              </picture>
             </div>
             <p class="problems__second-text appear">With the money from the store I can now build a decent <span
                 class="highlight highlight--black">living part</span> of the printing shop for my family. And eventually
@@ -571,45 +587,61 @@
               <p>Help me build my printing business</p>
               <div class="blueprint__game">
                 <div class="blueprint__items blueprint__items--1">
-                  <img draggable="false" class="blueprint__living blueprint__living--item"
-                    src="./src/image/blueprint-living.png" alt="Living part">
-                  <img draggable="false" class="blueprint__studio blueprint__studio--item" src="./src/image/blueprint-studio.png" alt="Studio">
+                  <picture class="picture__grid">
+                    <source srcset="./src/image/blueprint-living.avif" type="image/avif">
+                    <source srcset="./src/image/blueprint-living.webp" type="image/webp">
+                    <img draggable="false" class="blueprint__living blueprint__living--item"
+                      src="./src/image/blueprint-living.png" alt="Living part">
+                  </picture>
+                  <picture class="picture__grid">
+                    <source srcset="./src/image/blueprint-studio.avif" type="image/avif">
+                    <source srcset="./src/image/blueprint-studio.webp" type="image/webp">
+                    <img draggable="false" class="blueprint__studio blueprint__studio--item" src="./src/image/blueprint-studio.png" alt="Studio">
+                  </picture>
                 </div>
                 <div class="blueprint__map">
                   <div class="blueprint__place-holder blueprint__place-holder--childeren">
                     <img class="blueprint__childeren blueprint__childeren--place"
-                      src="./src/image/blueprint-childeren-place.png" alt="Childeren houses place">
+                      src="./src/image/blueprint-childeren-place.avif" alt="Childeren houses place">
                     <img class="blueprint__childeren blueprint__childeren--map opacity-0"
-                      src="./src/image/blueprint-childeren.png" alt="Houses for childeren">
-                    <img class="blueprint__childeren blueprint__childeren--blink opacity-0" src="./src/image/blueprint-childeren-blink.png" alt="Childeren houses blink">
+                      src="./src/image/blueprint-childeren.avif" alt="Houses for childeren">
+                    <img class="blueprint__childeren blueprint__childeren--blink opacity-0" src="./src/image/blueprint-childeren-blink.avif" alt="Childeren houses blink">
                   </div>
                   <div class="blueprint__place-holder blueprint__place-holder--corner">
-                    <img class="blueprint__corner blueprint__corner--place" src="./src/image/blueprint-corner-place.png"
+                    <img class="blueprint__corner blueprint__corner--place" src="./src/image/blueprint-corner-place.avif"
                       alt="Corner house place">
-                    <img class="blueprint__corner blueprint__corner--map opacity-0" src="./src/image/blueprint-corner.png"
+                    <img class="blueprint__corner blueprint__corner--map opacity-0" src="./src/image/blueprint-corner.avif"
                       alt="Corner house">
-                    <img class="blueprint__corner blueprint__corner--blink opacity-0" src="./src/image/blueprint-corner-blink.png" alt="Corner house blink">
+                    <img class="blueprint__corner blueprint__corner--blink opacity-0" src="./src/image/blueprint-corner-blink.avif" alt="Corner house blink">
                   </div>
                   <div class="blueprint__place-holder blueprint__place-holder--living">
-                    <img class="blueprint__living blueprint__living--place" src="./src/image/blueprint-living-place.png"
+                    <img class="blueprint__living blueprint__living--place" src="./src/image/blueprint-living-place.avif"
                       alt="Living part place">
-                    <img class="blueprint__living blueprint__living--map opacity-0" src="./src/image/blueprint-living.png"
+                    <img class="blueprint__living blueprint__living--map opacity-0" src="./src/image/blueprint-living.avif"
                       alt="Living part">
-                    <img class="blueprint__living blueprint__living--blink opacity-0" src="./src/image/blueprint-living-blink.png" alt="Living part blink">
+                    <img class="blueprint__living blueprint__living--blink opacity-0" src="./src/image/blueprint-living-blink.avif" alt="Living part blink">
                   </div>
                   <div class="blueprint__place-holder blueprint__place-holder--studio">
-                    <img class="blueprint__studio blueprint__studio--place" src="./src/image/blueprint-studio-place.png"
+                    <img class="blueprint__studio blueprint__studio--place" src="./src/image/blueprint-studio-place.avif"
                       alt="Studio Place">
-                    <img class="blueprint__studio blueprint__studio--map opacity-0" src="./src/image/blueprint-studio.png"
+                    <img class="blueprint__studio blueprint__studio--map opacity-0" src="./src/image/blueprint-studio.avif"
                       alt="Studio">
-                    <img class="blueprint__studio blueprint__studio--blink opacity-0" src="./src/image/blueprint-studio-blink.png" alt="Studio blink">
+                    <img class="blueprint__studio blueprint__studio--blink opacity-0" src="./src/image/blueprint-studio-blink.avif" alt="Studio blink">
                   </div>
                 </div>
                 <div class="blueprint__items blueprint__items--2">
-                  <img draggable="false" class="blueprint__corner blueprint__corner--item" src="./src/image/blueprint-corner.png"
-                    alt="Corner house">
-                  <img draggable="false" class="blueprint__childeren blueprint__childeren--item" src="./src/image/blueprint-childeren.png"
-                    alt="Houses for childeren">
+                  <picture class="picture__grid">
+                    <source srcset="./src/image/blueprint-corner.avif" type="image/avif">
+                    <source srcset="./src/image/blueprint-corner.webp" type="image/webp">
+                      <img draggable="false" class="blueprint__corner blueprint__corner--item" src="./src/image/blueprint-corner.png"
+                        alt="Corner house">
+                  </picture>
+                  <picture class="picture__grid">
+                    <source srcset="./src/image/blueprint-childeren.avif" type="image/avif">
+                    <source srcset="./src/image/blueprint-childeren.webp" type="image/webp">
+                      <img draggable="false" class="blueprint__childeren blueprint__childeren--item" src="./src/image/blueprint-childeren.png"
+                        alt="Houses for childeren">
+                  </picture>
                 </div>
               </div>
             </div>
@@ -641,7 +673,11 @@
               </div>
             </div>
             <div class="plantin-logo appear">
-              <img src="./src/image/plantin-logo.png" alt="Logo">
+              <picture>
+                <source srcset="./src/image/plantin-logo.avif" type="image/avif">
+                <source srcset="./src/image/plantin-logo.webp" type="image/webp">
+                <img src="./src/image/plantin-logo.png" alt="Logo">
+              </picture>
               <p>My logo, the golden compass with the motto 'Labore et Constantia', represents precision, hard work, and
                 balance between
                 knowledge and faith.</p>
