@@ -1317,10 +1317,24 @@ h3 {
 }
 
 .normandy__normandy img {
-  width: 300%;
+  width: 110rem;
   height: auto;
 
-  margin-left: -65%;
+  margin-left: -27%;
+}
+
+@media (min-width: 500px){
+  .normandy__normandy img {
+    width: 140rem;
+    margin-left: -25%;
+  }
+}
+
+@media (min-width: 700px) {
+  .normandy__normandy img {
+    width: 160rem;
+    margin-left: -22%;
+  }
 }
 
 .normandy__head-story-container {
@@ -1986,6 +2000,12 @@ h3 {
 
   100% {
     background-color: var(--color-blue);
+  }
+}
+
+@media (max-width: 1023px) {
+  .blueprint__items--1{
+    margin-top: 0rem;
   }
 }
 
